@@ -4,16 +4,20 @@ import styled from 'styled-components'
 const Header = props => {
     const [isCheckedAll, setIsCheckedAll] = useState(false);
 
+    const handleChooseAllClick = () => {
+        let isChecked = !isCheckedAll;
+        props.checkAllRows(isChecked)
+        setIsCheckedAll(isChecked);
+    }
+
     return (
     <HeaderWrapper>
-        {!props.disableChooseRows && <ChooseRowsCheckBox type="checkbox" checked={isCheckedAll} onClick={()=>{
-            let isChecked = !isCheckedAll;
-            props.checkAllRows(isChecked)
-            setIsCheckedAll(isChecked);
-        }}/>}
+        {!props.disableChooseRows && <ChooseRowsCheckBox type="checkbox" checked={isCheckedAll} onClick={handleChooseAllClick}/>}
         {props.data.map((column, index) => {
             return (
             <HeaderColumn 
+            disableSorting={props.disableSorting}
+            disableFilters={props.disableFilters}
             onOpenFilterClicked={props.onOpenFilterClicked}
             isWitoutData={column.props.isWitoutData}
             value={column.props.title}
@@ -53,10 +57,10 @@ const HeaderColumn = props => {
     <HeaderColumnWrapper key={props.index} isWitoutData={props.isWitoutData}>
         <HeaderValueWrapper >
             {props.value}
-            {!props.isWitoutData && <FilterButton isFiltered={isFiltered} onClick={onFilterValueClickHandler}>🝖</FilterButton>}
-            {props.isWitoutData ? null : isAsc ? 
-            <BottomSortArrow onClick={handleSortClicked} /> :
-            <TopSortArrow onClick={handleSortClicked} />}
+            {!props.isWitoutData && !props.disableFilters && <FilterButton isFiltered={isFiltered} onClick={onFilterValueClickHandler}>🝖</FilterButton>}
+            {props.isWitoutData || props.disableSorting ? null : isAsc ? 
+            <BottomSortArrow disableFilters={props.disableFilters} onClick={handleSortClicked} /> :
+            <TopSortArrow disableFilters={props.disableFilters} onClick={handleSortClicked} />}
         </HeaderValueWrapper>
     </HeaderColumnWrapper>
     )
@@ -89,7 +93,7 @@ const TopSortArrow = styled.div`
     margin-bottom: 0.45rem;
     opacity: 0;
     transition: .25s linear all;
-    margin-left: 0.55rem;
+    margin-left: ${props => props.disableFilters ? "auto" : "0.55rem"};
     cursor: pointer;
 
     &:hover{
@@ -104,7 +108,7 @@ const BottomSortArrow = styled.div`
     margin-bottom: 0.55rem;
     opacity: 0;
     transition: .25s linear all;
-    margin-left: 0.45rem;
+    margin-left: ${props => props.disableFilters ? "auto" : "0.55rem"};
     cursor: pointer;
 
     &:hover{
@@ -124,7 +128,6 @@ const HeaderColumnWrapper = styled.div`
     padding-left: 15px;
     align-items: center;
     display:flex;
-    cursor: pointer;
     transition: .25s linear background-color;
 
     &:hover{

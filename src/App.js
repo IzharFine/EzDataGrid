@@ -3,6 +3,20 @@ import Grid from './grid/components/Grid/Grid';
 import Column from './grid/components/Column/Column';
 import styled from 'styled-components';
 
+// Grid params:
+// data - array of json objects describes your data (JSON object array).
+// settings - settings of the grid (JSON object).
+// onSearchChanged - on search changed call back, returns the search input value(function).
+// onFilterChanged - on filter changed call back, returns invput value , column id and operator value (function).
+// onPageChangeHandler - on page navigation call back, returns the page number (function).
+// addButtonClickHandel - creates add button above the grid - that event will triger when the button clicked, returns the column titles and ids (function).
+
+// Grid settings:
+// paging - number of rows in each page (default 10).
+// disableFilters - disable filters (default enable).
+// disableChooseRows - disable choose rows (default enable).
+// disableSorting - disable sorting (default enable);
+
 function App() {
     const [accounts, setAccounts] = useState(null);
 
@@ -12,17 +26,11 @@ function App() {
 	}
 
 	let settings = {
-		paging: 5,
+		paging: 25,
 		disableFilters: false,
-		disableChooseRows: false
+		disableChooseRows: false,
+		disableSorting: false
 	}
-
-	// Grid params:
-	// data - array of json objects describes your data.
-	// settings - settings of the grid.
-	// onSearchChanged - on search changed call back.
-	// onFilterChanged - on filter changed call back.
-	// onPageChangeHandler - on page navigation call back.
 
 	return (
 	<Grid data={accounts} settings={settings} >
@@ -37,7 +45,7 @@ function App() {
 const CostumButton = props => {
 	
 	const customClick = (e) => {
-		let rowData = props.parent;
+		//let rowData = props.parent;
 		
 		debugger;
 	}

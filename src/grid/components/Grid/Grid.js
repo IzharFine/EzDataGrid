@@ -15,6 +15,7 @@ const Grid = props => {
 
 	const disableFilters = props.settings && props.settings.disableFilters;
 	const disableChooseRows = props.settings && props.settings.disableChooseRows;
+	const disableSorting = props.settings && props.settings.disableSorting;
 	
 	//#region Move to operations
 	const initRows = useCallback(() => {
@@ -47,7 +48,7 @@ const Grid = props => {
 
 	const onSearchChangedHandler = ele => {
 		if(props.onSearchChanged)
-			props.onSearchChanged(ele)
+			props.onSearchChanged(ele.target.value);
 		else{
 			let rowsToShow = onSearchChanged(ele, rows);
 			setPageNumber(0);
@@ -57,9 +58,9 @@ const Grid = props => {
 
 	const onFilterChangedHandler = (value, columnId, operatorAction, operatorEnum) => {
 		if(props.onFilterChanged)
-			props.onFilterChanged(value, columnId, operatorEnum)
+			props.onFilterChanged(value, columnId, operatorEnum);
 		else{
-			setRowsToShow(onFilterChanged(value, columnId, operatorAction, rows, setPageNumber))
+			setRowsToShow(onFilterChanged(value, columnId, operatorAction, rows, setPageNumber));
 		}
 	}
 
@@ -80,26 +81,31 @@ const Grid = props => {
 		return <Loader></Loader>;
 	}
 	else {
-		let unfilteredColumnsIds = props.children.filter(columns => !columns.props.isWitoutData)
-								   .map(column => column.props.title);
-
+		let unFilteredColumns = props.children.filter(columns => !columns.props.isWitoutData);
+		let unfilteredColumnsTitles = unFilteredColumns.map(column => column.props.title);
+		let unfilteredColumnsIds = unFilteredColumns.map(column => column.key);
+								   
 		return (
 		<GridWrapper>
-			{	
+			{	// Filters wrapper includes: search bar, filter labels, add button.
 				!disableFilters &&
 				<Filters
-				onSearchChanged={onSearchChangedHandler} 
-				onFilterChanged={onFilterChangedHandler} 
-				columnIds={unfilteredColumnsIds} 
-				rows={rows}
-				removeFilter={filterText => {
-					setRowsToShow(removeFilter(filterText, rows));
-				}}
-				onCloseFilterClicked={onCloseFilterClicked}
-				filteredList={filteredList}
+					onSearchChanged={onSearchChangedHandler} 
+					onFilterChanged={onFilterChangedHandler} 
+					columnTitles={unfilteredColumnsTitles} 
+					columnIds={unfilteredColumnsIds}
+					rows={rows}
+					removeFilter={filterText => {
+						setRowsToShow(removeFilter(filterText, rows));
+					}}
+					onCloseFilterClicked={onCloseFilterClicked}
+					filteredList={filteredList}
+					addButtonClickHandel={props.addButtonClickHandel}
 				></Filters>
 			}
 			<Header filteredList={filteredList}
+					disableFilters={disableFilters}
+					disableSorting={disableSorting}
 					checkAllRows={checkAllRows}
 					data={props.children} 
 					disableChooseRows={disableChooseRows}

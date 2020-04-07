@@ -8,11 +8,13 @@ export const Row = (props) => {
 		setIsChecked(props.rowData.IsChecked);
 	}, [props.rowData.IsChecked])
 
+	const handleChooseRowClick = () => {
+		props.rowData.IsChecked = !IsChecked;
+		setIsChecked(!IsChecked);
+	}
+
 	return (<RowWrapper key={props.index} index={props.index}>
-				{!props.disableChooseRows && <ChooseRowsCheckBox type="checkbox" checked={IsChecked} onClick={()=>{
-					props.rowData.IsChecked = !IsChecked;
-					setIsChecked(!IsChecked);
-				}}/>}
+				{!props.disableChooseRows && <ChooseRowsCheckBox type="checkbox" checked={IsChecked} onClick={handleChooseRowClick}/>}
 				{props.children.map(column=>{
 					return (
 							<ColumnWrapper key={props.id}>

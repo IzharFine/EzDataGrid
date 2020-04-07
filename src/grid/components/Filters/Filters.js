@@ -7,10 +7,13 @@ function Filters(props){
                 <SearchInput placeholder="Search" onChange={props.onSearchChanged}></SearchInput>
                 <FiltersButtons 
                     onCloseFilterClicked={props.onCloseFilterClicked}
-                    columns={props.columnIds} text={"FILTERS"}
                     onChange={props.onFilterChanged}
                     onRemoveFilter={props.removeFilter}
                     filteredList={props.filteredList} />
+                    {props.addButtonClickHandel && 
+                    <AddRowButton onClick={() => 
+                        props.addButtonClickHandel(props.columnTitles, props.columnIds)}>ADD
+                    </AddRowButton>}
             </FiltersWrapper>);
 }
 
@@ -37,6 +40,33 @@ const FiltersButtons = props => {
             </React.Fragment>
         )
 }
+
+const AddRowButton = styled.div`
+    display: inline-flex;
+    padding: .375rem .9rem;
+    line-height: 1.5;
+    font-weight: bold;
+    font-size: 12px;
+    margin-left: auto;
+    margin-right: .25rem;
+    background-color: #efefef;
+    background-clip: padding-box;
+    border-radius: .25rem;
+    transition: all linear .2s;
+    outline: none;
+    color: black;
+    cursor: pointer;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border: 1px solid #ced4da;
+
+    &:hover{
+        color: #ffffff;
+        background-color: #d4d4d4;
+    }
+`;
 
 const FilteredValuesWrapper = styled.div`
     display: flex;
