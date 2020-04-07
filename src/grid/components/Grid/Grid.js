@@ -14,6 +14,7 @@ const Grid = props => {
 	const [filteredList, setFilteredList] = useState([]);
 
 	const disableFilters = props.settings && props.settings.disableFilters;
+	const disableChooseRows = props.settings && props.settings.disableChooseRows;
 	
 	//#region Move to operations
 	const initRows = useCallback(() => {
@@ -26,6 +27,15 @@ const Grid = props => {
 	useEffect(() => {
 		initRows();
 	}, [props.data]);
+
+	const checkAllRows = (isChecked) => {
+		let rowsToUpdate = [...rowsToShow];
+
+		setRowsToShow(rowsToUpdate.map(rowToShow => {
+			 rowToShow.IsChecked = isChecked;
+			 return rowToShow;
+		}))
+	}
 
 	const onCloseFilterClicked = (filterText) => {
 		setFilteredList([...filteredList.filter(filteredText => filteredText !== filterText)]);
@@ -90,7 +100,9 @@ const Grid = props => {
 				></Filters>
 			}
 			<Header filteredList={filteredList}
+					checkAllRows={checkAllRows}
 					data={props.children} 
+					disableChooseRows={disableChooseRows}
 					onOpenFilterClicked={onOpenFilterClicked}
 					sortByColumn={(value, isAsc) => {
 						let sortedRowsToShow = sortByColumn(value, isAsc, rowsToShow);
@@ -98,7 +110,7 @@ const Grid = props => {
 					}}>
 			</Header>
 			<RowsWrapper>
-				{renderRows(props.children, pageNumber, rowsInPage, rowsToShow)}
+				{renderRows(props.children, pageNumber, rowsInPage, rowsToShow, disableChooseRows)}
 			</RowsWrapper>
 			<Footer rowsToShow={rowsToShow}
 					setPageNumber={onPageChangeHandler} 

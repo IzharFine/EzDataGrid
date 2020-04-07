@@ -2,8 +2,15 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
 
 const Header = props => {
+    const [isCheckedAll, setIsCheckedAll] = useState(false);
+
     return (
     <HeaderWrapper>
+        {!props.disableChooseRows && <ChooseRowsCheckBox type="checkbox" checked={isCheckedAll} onClick={()=>{
+            let isChecked = !isCheckedAll;
+            props.checkAllRows(isChecked)
+            setIsCheckedAll(isChecked);
+        }}/>}
         {props.data.map((column, index) => {
             return (
             <HeaderColumn 
@@ -43,7 +50,7 @@ const HeaderColumn = props => {
     }
 
     return(
-    <HeaderColumnWrapper key={props.index}>
+    <HeaderColumnWrapper key={props.index} isWitoutData={props.isWitoutData}>
         <HeaderValueWrapper >
             {props.value}
             {!props.isWitoutData && <FilterButton isFiltered={isFiltered} onClick={onFilterValueClickHandler}>🝖</FilterButton>}
@@ -54,6 +61,10 @@ const HeaderColumn = props => {
     </HeaderColumnWrapper>
     )
 }
+
+const ChooseRowsCheckBox = styled.input`
+
+`;
 
 const FilterButton = styled.div`
     font-size: 14px;
@@ -117,7 +128,7 @@ const HeaderColumnWrapper = styled.div`
     transition: .25s linear background-color;
 
     &:hover{
-		background-color: #eaeaeaab;
+        background-color: ${props => props.isWitoutData ? "" : "#eaeaeaab"};
 	}
 `;
 
@@ -155,6 +166,7 @@ const HeaderWrapper = styled.div`
     transition: .25s linear background-color;
     z-index: 99;
     box-shadow: 0px 3px 5px -2px rgba(0,0,0,0.75);
+    align-items: center;
 `;
 
 export default Header;

@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
 
 export const Row = (props) => {
+	const [IsChecked ,setIsChecked] = useState(props.rowData.IsChecked);
+	
+	useEffect(()=>{
+		setIsChecked(props.rowData.IsChecked);
+	}, [props.rowData.IsChecked])
+
 	return (<RowWrapper key={props.index} index={props.index}>
+				{!props.disableChooseRows && <ChooseRowsCheckBox type="checkbox" checked={IsChecked} onClick={()=>{
+					props.rowData.IsChecked = !IsChecked;
+					setIsChecked(!IsChecked);
+				}}/>}
 				{props.children.map(column=>{
 					return (
 							<ColumnWrapper key={props.id}>
@@ -17,12 +27,18 @@ export class RowData {
 		this.Id = id;
 		this.Columns = [];
 		this.Filtered = [];
+		this.IsChecked = false;
 	}
 }
+
+const ChooseRowsCheckBox = styled.input`
+
+`;
 
 const RowWrapper = styled.div`
     display: flex; 
     flex-wrap: wrap;
+	align-items: center;
     min-height: 46px;
     transition: .25s linear background-color;
 	background-color: ${props => props.index % 2 === 0 ? "rgba(6, 6, 6, 0.05)" : "" };

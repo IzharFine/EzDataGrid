@@ -12,8 +12,9 @@ function App() {
 	}
 
 	let settings = {
-		paging: 25,
-		disableFilters: false
+		paging: 5,
+		disableFilters: false,
+		disableChooseRows: false
 	}
 
 	// Grid params:
@@ -36,7 +37,7 @@ function App() {
 const CostumButton = props => {
 	
 	const customClick = (e) => {
-		//let rowData = props.parent;
+		let rowData = props.parent;
 		
 		debugger;
 	}

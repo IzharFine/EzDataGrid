@@ -13,7 +13,7 @@ export class ColumnData {
         this.Id = id;
         this.Value = value;
         this.Index = index;
-        this.IsWitoutData = false || isWitoutData;
+        this.IsWitoutData = isWitoutData;
 	}
 }
 
