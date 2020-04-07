@@ -7,7 +7,6 @@ import styled from 'styled-components';
 // data - array of json objects describes your data (JSON object array).
 // settings - settings of the grid (JSON object).
 // onSearchChanged - on search changed call back, returns the search input value(function).
-// onFilterChanged - on filter changed call back, returns invput value , column id and operator value (function).
 // onPageChangeHandler - on page navigation call back, returns the page number (function).
 // addButtonClickHandel - creates add button above the grid - that event will triger when the button clicked, returns the column titles and ids (function).
 
@@ -26,7 +25,6 @@ function App() {
 	}
 
 	let settings = {
-		paging: 25,
 		disableFilters: false,
 		disableChooseRows: false,
 		disableSorting: false

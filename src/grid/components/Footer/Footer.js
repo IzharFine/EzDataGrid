@@ -28,20 +28,45 @@ export const Footer = props => {
         props.setPageNumber(requstedPage - 1);
     }
 
+    const onPagingSelectChange = (e) => {
+        let pagingNumber = e.target.value * 1;
+
+        props.setRowsInPage(pagingNumber);
+    }
+
+    const pagingOptions = [25, 50, 100];
+
     return(
     <FooterWrapper>
-        <span>
-            Showing {startingRow + 1} to {endingRow} of {props.rowsToShow.length} entries.
-        </span>
         <ChangePageWrapper>
             <LeftArrow onClick={onLeftArrowClick} />
             <ChangePageInput type="number" value={props.pageNumber * 1 + 1} onChange={(e) => { onChangePageInputChange(e) }}></ChangePageInput>
             <LastPageSpan>{" / " + finalPage}</LastPageSpan>
             <RightArrow onClick={onRightArrowClick} />
         </ChangePageWrapper>
+        <span>
+            Showing {startingRow + 1} to {endingRow} of {props.rowsToShow.length} entries
+        </span>
+        <PagingSelect onChange={onPagingSelectChange}>
+            {pagingOptions.map((pagingNumber)=>{
+                return (<PagingOption key={pagingNumber} value={pagingNumber}>{ pagingNumber }</PagingOption>)
+            })}
+        </PagingSelect>
     </FooterWrapper>)
 }
 
+const PagingOption = styled.option`
+
+`;
+
+const PagingSelect = styled.select`
+    padding: .075rem .45rem;
+    line-height: 1.5;
+    margin-left: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+`;
 
 const LastPageSpan = styled.span`
 	display: flex;
@@ -72,7 +97,7 @@ const RightArrow = styled.div`
 
 const ChangePageWrapper = styled.div`
 	display: flex;
-    margin-left: auto;
+    margin-right: .55rem;
     align-items: center;
 `;
 
@@ -81,6 +106,12 @@ const ChangePageInput = styled.input`
     margin-right: .25rem;
     border: 1px solid dimgrey;
     outline: none;
+    padding: .075rem .45rem;
+    line-height: 1.5;
+    margin-left: 0.25rem;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
 `;
 
 const FooterWrapper = styled.div`
@@ -88,6 +119,7 @@ const FooterWrapper = styled.div`
     padding: .5rem .35rem .5rem .35rem;
     min-height: 20px;
     border-top: 1px solid #c8c8c8;
+    align-items: center;
 `;
 
 export default Footer;

@@ -10,14 +10,13 @@ const Grid = props => {
 	const [rows, setRows] = useState(null);
 	const [rowsToShow, setRowsToShow] = useState(null);
 	const [pageNumber, setPageNumber] = useState(0);
-	const [rowsInPage, setRowsInPage] = useState(props.settings && props.settings.paging ? props.settings.paging : 10);
+	const [rowsInPage, setRowsInPage] = useState(25);
 	const [filteredList, setFilteredList] = useState([]);
 
 	const disableFilters = props.settings && props.settings.disableFilters;
 	const disableChooseRows = props.settings && props.settings.disableChooseRows;
 	const disableSorting = props.settings && props.settings.disableSorting;
 	
-	//#region Move to operations
 	const initRows = useCallback(() => {
 		let rowsData = adaptRowsData(props.data, props.children, rows);
 		setPageNumber(0);
@@ -57,11 +56,7 @@ const Grid = props => {
 	}
 
 	const onFilterChangedHandler = (value, columnId, operatorAction, operatorEnum) => {
-		if(props.onFilterChanged)
-			props.onFilterChanged(value, columnId, operatorEnum);
-		else{
-			setRowsToShow(onFilterChanged(value, columnId, operatorAction, rows, setPageNumber));
-		}
+		setRowsToShow(onFilterChanged(value, columnId, operatorAction, rows, setPageNumber));
 	}
 
 	const onPageChangeHandler = (pageNumber) => {
@@ -71,7 +66,6 @@ const Grid = props => {
 			setPageNumber(pageNumber);
 		}
 	}
-	//#endregion
 
 	if (!props.data) 
 		return <div>No data</div>;
@@ -118,7 +112,8 @@ const Grid = props => {
 			<RowsWrapper>
 				{renderRows(props.children, pageNumber, rowsInPage, rowsToShow, disableChooseRows)}
 			</RowsWrapper>
-			<Footer rowsToShow={rowsToShow}
+			<Footer setRowsInPage={setRowsInPage}
+					rowsToShow={rowsToShow}
 					setPageNumber={onPageChangeHandler} 
 					pageNumber={pageNumber}
 					rowsInPage={rowsInPage}
