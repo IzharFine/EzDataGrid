@@ -12,10 +12,13 @@ const Grid = props => {
 	const [pageNumber, setPageNumber] = useState(0);
 	const [rowsInPage, setRowsInPage] = useState(25);
 	const [filteredList, setFilteredList] = useState([]);
-
-	const disableFilters = props.settings && props.settings.disableFilters;
-	const disableChooseRows = props.settings && props.settings.disableChooseRows;
-	const disableSorting = props.settings && props.settings.disableSorting;
+	const [settings, setSettings] = useState(
+		{
+			disableFilters: props.settings && props.settings.disableFilters,
+			disableChooseRows: props.settings && props.settings.disableChooseRows,
+			disableSorting: props.settings && props.settings.disableSorting
+		}
+	);
 	
 	const initRows = useCallback(() => {
 		let rowsData = adaptRowsData(props.data, props.children, rows);
@@ -27,6 +30,10 @@ const Grid = props => {
 	useEffect(() => {
 		initRows();
 	}, [props.data]);
+
+	useEffect(() => {
+		setSettings(props.settings);
+	}, [props.settings])
 
 	const checkAllRows = (isChecked) => {
 		let rowsToUpdate = [...rowsToShow];
@@ -81,7 +88,7 @@ const Grid = props => {
 		return (
 		<GridWrapper>
 			{	// Filters wrapper includes: search bar, filter labels, add button.
-				!disableFilters &&
+				!settings.disableFilters &&
 				<Filters
 					onSearchChanged={onSearchChangedHandler} 
 					onFilterChanged={onFilterChangedHandler} 
@@ -97,11 +104,11 @@ const Grid = props => {
 				></Filters>
 			}
 			<Header filteredList={filteredList}
-					disableFilters={disableFilters}
-					disableSorting={disableSorting}
+					disableFilters={settings.disableFilters}
+					disableSorting={settings.disableSorting}
 					checkAllRows={checkAllRows}
 					data={props.children} 
-					disableChooseRows={disableChooseRows}
+					disableChooseRows={settings.disableChooseRows}
 					onOpenFilterClicked={onOpenFilterClicked}
 					sortByColumn={(value, isAsc) => {
 						let sortedRowsToShow = sortByColumn(value, isAsc, rowsToShow);
@@ -109,7 +116,7 @@ const Grid = props => {
 					}}>
 			</Header>
 			<RowsWrapper>
-				{renderRows(props.children, pageNumber, rowsInPage, rowsToShow, disableChooseRows)}
+				{renderRows(props.children, pageNumber, rowsInPage, rowsToShow, settings.disableChooseRows)}
 			</RowsWrapper>
 			<Footer setRowsInPage={setRowsInPage}
 					rowsToShow={rowsToShow}

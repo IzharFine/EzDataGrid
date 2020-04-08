@@ -15,19 +15,41 @@ import styled from 'styled-components';
 // disableSorting - disable sorting (default enable);
 
 function App() {
-    const [accounts, setAccounts] = useState(null);
+	const [accounts, setAccounts] = useState(null);
+	const [settings, setSettings] = useState(
+		{
+			disableFilters: false,
+			disableChooseRows: false,
+			disableSorting: false
+		}
+	);
 
 	if (!accounts) {
 		handleFeatchAccounts('posts', setAccounts);
 		return <div>Loading Data</div>
 	}
 
-	let settings = {
-		disableFilters: false,
-		disableChooseRows: false,
-		disableSorting: false
-	}
+	const CostumButton = props => {
+	
+		const customClick = (e) => {
+			//let rowData = props.parent;
+			handleFeatchAccounts('posts', setAccounts);
 
+			setSettings({
+				disableFilters: true,
+				disableChooseRows: true,
+				disableSorting: true
+			})
+		}
+	
+		return (
+				<CustomButtonWrapper type="button" onClick={customClick}>
+					CLICK
+				</CustomButtonWrapper>
+		)
+	}
+	
+	
 	return (
 	<EzGrid data={accounts} settings={settings} >
 		<EzColumn key={"index"} title={"Id"} />
@@ -35,19 +57,6 @@ function App() {
 		<EzColumn key={"gender"} title={"Gender"} />
 		<CostumButton key={"custom"} title={"Actions"} isWitoutData />
 	</EzGrid>);
-}
-
-const CostumButton = props => {
-	
-	const customClick = (e) => {
-		//let rowData = props.parent;
-	}
-
-	return (
-			<CustomButtonWrapper type="button" onClick={customClick}>
-				CLICK
-			</CustomButtonWrapper>
-	)
 }
 
 const handleFeatchAccounts = (data, setAccounts) => {
