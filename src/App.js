@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import EzGrid, { EzColumn } from 'ez-data-grid';
+import EzGrid, { EzColumn } from './grid/index';
 import styled from 'styled-components';
 
 // Grid params:
@@ -30,9 +30,9 @@ function App() {
 
 	return (
 	<EzGrid data={accounts} settings={settings} >
-		<EzColumn key={"id"} title={"Id"} />
-		<EzColumn key={"title"} title={"Name"} />
-		<EzColumn key={"author"} title={"Gender"} />
+		<EzColumn key={"index"} title={"Id"} />
+		<EzColumn key={"name"} title={"Name"} />
+		<EzColumn key={"gender"} title={"Gender"} />
 		<CostumButton key={"custom"} title={"Actions"} isWitoutData />
 	</EzGrid>);
 }
