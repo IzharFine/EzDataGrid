@@ -9,7 +9,7 @@ Light easy to use free open source to create custom React data grids.
 npm install ez-data-grid --save
 ```
 
-## Usage simpale example
+## Usage simple example
 
 ```react
 import React from 'react';
