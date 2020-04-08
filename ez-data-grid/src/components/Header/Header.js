@@ -12,7 +12,7 @@ const Header = props => {
 
     return (
     <HeaderWrapper>
-        {!props.disableChooseRows && <ChooseRowsCheckBox type="checkbox" checked={isCheckedAll} onClick={handleChooseAllClick}/>}
+        {!props.disableChooseRows && <ChooseRowsCheckBox type="checkbox" checked={isCheckedAll} onClick={handleChooseAllClick} readOnly />}
         {props.data.map((column, index) => {
             return (
             <HeaderColumn 
@@ -21,6 +21,7 @@ const Header = props => {
             onOpenFilterClicked={props.onOpenFilterClicked}
             isWitoutData={column.props.isWitoutData}
             value={column.props.title}
+            key={index}
             index={index}
             filteredList={props.filteredList}
             sortByColumn={(value, isAsc) => {

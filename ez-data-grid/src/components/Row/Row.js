@@ -14,10 +14,10 @@ export const Row = (props) => {
 	}
 
 	return (<RowWrapper key={props.index} index={props.index}>
-				{!props.disableChooseRows && <ChooseRowsCheckBox type="checkbox" checked={IsChecked} onClick={handleChooseRowClick}/>}
-				{props.children.map(column=>{
+				{!props.disableChooseRows && <ChooseRowsCheckBox type="checkbox" checked={IsChecked} onClick={handleChooseRowClick} readOnly/>}
+				{props.children.map((column, index) => {
 					return (
-							<ColumnWrapper key={props.id}>
+							<ColumnWrapper key={index} >
 								{React.cloneElement(column)}
 							</ColumnWrapper>);
 				})}
