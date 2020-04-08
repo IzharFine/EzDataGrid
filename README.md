@@ -13,21 +13,22 @@ npm install ez-data-grid --save
 ## Usage simple example
 
 ```jsx
-import React from 'react';
+import React, { useState } from 'react';
 import EzGrid, { EzColumn } from 'ez-data-grid';
 
 function Example() {
-let mockData = [
+const [mockData, setMockData] = useState([
     { id: 0, name: "Izhar Fine", gender: "male", company: "home" },
     { id: 1, name: "Tamara Vaisman", gender: "female", company: "mall" },
     { id: 2, name: "Moshe Cohen", gender: "male", company: "renegade" }
-]
-    
-let settings = {
-    disableFilters: false,
-    disableChooseRows: true,
-    disableSorting: false
-}
+]);
+
+const [settings, setSettings] = useState(
+{
+	disableFilters: false,
+	disableChooseRows: false,
+	disableSorting: false
+});
 
 return (
 <EzGrid data={mockData} settings={settings} >
