@@ -68,7 +68,7 @@ const HeaderColumn = props => {
 }
 
 const ChooseRowsCheckBox = styled.input`
-
+    margin-left: .45rem;
 `;
 
 const FilterButton = styled.div`

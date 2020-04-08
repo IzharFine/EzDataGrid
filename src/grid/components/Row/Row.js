@@ -34,7 +34,7 @@ export class RowData {
 }
 
 const ChooseRowsCheckBox = styled.input`
-
+	margin-left: .45rem;
 `;
 
 const RowWrapper = styled.div`
