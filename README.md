@@ -13,31 +13,31 @@ npm install ez-data-grid --save
 
 ```react
 import React from 'react';
-import ReactDOM from 'react-dom';
 import EzGrid, { EzColumn } from 'ez-data-grid';
 
-let mockData = [
-  { id: 0, title: "Izhar Fine", gender: "male" },
-  { id: 1, title: "Tamara Vaisman", gender: "female" },
-  { id: 2, title: "Moshe Cohen", gender: "male" }
-]
+function Example() {
+	let mockData = [
+		{ id: 0, title: "Izhar Fine", gender: "male" },
+		{ id: 1, title: "Tamara Vaisman", gender: "female" },
+		{ id: 2, title: "Moshe Cohen", gender: "male" }
+	  ]
+	  
+	  let settings = {
+			  disableFilters: false,
+			  disableChooseRows: true,
+			  disableSorting: false
+	  }
 
-let settings = {
-		disableFilters: false,
-		disableChooseRows: true,
-		disableSorting: false
+	return (
+	<EzGrid data={mockData} settings={settings} >
+		<EzColumn key={"index"} title={"Id"} />
+		<EzColumn key={"name"} title={"Name"} />
+		<EzColumn key={"gender"} title={"Gender"} />
+		<EzColumn key={"company"} title={"Company"} />
+	</EzGrid>);
 }
 
-ReactDOM.render(
-  <React.StrictMode>
-    <EzGrid data={mockData} settings={settings}>
-        <EzColumn key="id" title="Id"></EzColumn>
-        <EzColumn key="gender" title="Gender"></EzColumn>
-        <EzColumn key="title" title="Title"></EzColumn>
-    </EzGrid>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+export default Example;
 ```
 
 # EzGrid 
