@@ -98,8 +98,7 @@ const CostumButton = props => {
 return (
     <div onClick={customClick}>
         CLICK
-    </div>
-)
+    </div>)
 }
 
  ../
