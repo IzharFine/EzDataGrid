@@ -14,7 +14,11 @@ export const Row = (props) => {
 	}
 
 	return (<RowWrapper key={props.index} index={props.index}>
-				{!props.disableChooseRows && <ChooseRowsCheckBox type="checkbox" checked={IsChecked} onClick={handleChooseRowClick} readOnly/>}
+				{!props.disableChooseRows && 
+				<CheckBoxWrapper>
+					<ChooseRowsCheckBox type="checkbox" checked={IsChecked} onClick={handleChooseRowClick} readOnly/>
+				</CheckBoxWrapper>
+				}
 				{props.children.map((column, index) => {
 					return (
 							<ColumnWrapper key={index} >
@@ -33,8 +37,18 @@ export class RowData {
 	}
 }
 
+const CheckBoxWrapper = styled.div`
+    position: relative;
+    min-height: 46px;
+    padding-right: 10px;
+    padding-left: 10px;
+    align-items: center;
+    display:flex;
+`;
+
 const ChooseRowsCheckBox = styled.input`
-	margin-left: .45rem;
+    padding-right: 15px;
+	padding-left: 15px;
 `;
 
 const RowWrapper = styled.div`

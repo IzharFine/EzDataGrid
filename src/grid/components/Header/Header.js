@@ -12,7 +12,10 @@ const Header = props => {
 
     return (
     <HeaderWrapper>
-        {!props.disableChooseRows && <ChooseRowsCheckBox type="checkbox" checked={isCheckedAll} onClick={handleChooseAllClick} readOnly />}
+        {!props.disableChooseRows && 
+        <CheckBoxWrapper>
+                <ChooseRowsCheckBox type="checkbox" checked={isCheckedAll} onClick={handleChooseAllClick} readOnly />
+        </CheckBoxWrapper>}
         {props.data.map((column, index) => {
             return (
             <HeaderColumn 
@@ -67,8 +70,18 @@ const HeaderColumn = props => {
     )
 }
 
+const CheckBoxWrapper = styled.div`
+    position: relative;
+    min-height: 46px;
+    padding-right: 10px;
+    padding-left: 10px;
+    align-items: center;
+    display:flex;
+`;
+
 const ChooseRowsCheckBox = styled.input`
-    margin-left: .45rem;
+    padding-right: 15px;
+	padding-left: 15px;
 `;
 
 const FilterButton = styled.div`
