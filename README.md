@@ -1,10 +1,8 @@
 # Ez Data Grid
 
 
-Light easy to use free open source to create custom React data grids.
-
-## Demo
-https://izharfine.com/ezdatagrid/
+Light easy to use free open source to create custom React data grids. <br/>
+Demo: https://izharfine.com/ezdatagrid/
 
 ## Installation
 
