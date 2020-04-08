@@ -10,7 +10,6 @@ import styled from 'styled-components';
 // addButtonClickHandel - creates add button above the grid - that event will triger when the button clicked, returns the column titles and ids (function).
 
 // Grid settings:
-// paging - number of rows in each page (default 10).
 // disableFilters - disable filters (default enable).
 // disableChooseRows - disable choose rows (default enable).
 // disableSorting - disable sorting (default enable);

@@ -9,35 +9,36 @@ Light easy to use free open source to create custom React data grids.
 npm install ez-data-grid --save
 ```
 
-## Usage simple example
+## Usage simpale example
 
-```jsx
+```react
 import React from 'react';
+import ReactDOM from 'react-dom';
 import EzGrid, { EzColumn } from 'ez-data-grid';
+import styled from 'styled-components';
 
-function Example() {
-	let mockData = [
-		{ id: 0, name: "Izhar Fine", gender: "male", company: "home" },
-		{ id: 1, name: "Tamara Vaisman", gender: "female", company: "mall" },
-		{ id: 2, name: "Moshe Cohen", gender: "male", company: "renegade" }
-	  ]
-	  
-	  let settings = {
+let mockData = [
+  { id: 0, title: "Izhar Fine", gender: "male" },
+  { id: 1, title: "Tamara Vaisman", gender: "female" },
+  { id: 2, title: "Moshe Cohen", gender: "male" }
+]
+
+let settings = {
 		disableFilters: false,
 		disableChooseRows: true,
 		disableSorting: false
-	  }
-
-	return (
-	<EzGrid data={mockData} settings={settings} >
-		<EzColumn key={"id"} title={"Id"} />
-		<EzColumn key={"name"} title={"Name"} />
-		<EzColumn key={"gender"} title={"Gender"} />
-		<EzColumn key={"company"} title={"Company"} />
-	</EzGrid>);
 }
 
-export default Example;
+ReactDOM.render(
+  <React.StrictMode>
+    <EzGrid data={mockData} settings={settings}>
+        <EzColumn key="id" title="Id"></EzColumn>
+        <EzColumn key="gender" title="Gender"></EzColumn>
+        <EzColumn key="title" title="Title"></EzColumn>
+    </EzGrid>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
 ```
 
 # EzGrid 
@@ -84,7 +85,7 @@ Describes if this row have data to display from EzGrid data or it`s for custom.
 #### Example of custom button:
 
 
-```jsx
+```react
    ../
 
   const CostumButton = props => {
