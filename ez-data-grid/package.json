@@ -1,0 +1,16 @@
+{
+  "name": "ez-data-grid",
+  "version": "0.1.0",
+  "description": "React data grid, easy to use & custom.",
+  "main": "./build/index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "author": "Izhar Fine",
+  "license": "ISC",
+  "homepage": "https://github.com/IzharFine/EzDataGrid#readme",
+  "dependencies": {
+    "react": "^16.13.1",
+    "styled-components": "^5.0.1"
+  }
+}

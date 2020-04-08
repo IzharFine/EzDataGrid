@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import Grid from './grid/components/Grid/Grid';
-import Column from './grid/components/Column/Column';
+import EzGrid, { EzColumn } from 'ez-data-grid';
 import styled from 'styled-components';
 
 // Grid params:
@@ -31,13 +30,12 @@ function App() {
 	}
 
 	return (
-	<Grid data={accounts} settings={settings} >
-		<Column key={"index"} title={"Id"} />
-		<Column key={"name"} title={"Name"} />
-		<Column key={"gender"} title={"Gender"} />
-		<Column key={"company"} title={"Company"} />
+	<EzGrid data={accounts} settings={settings} >
+		<EzColumn key={"id"} title={"Id"} />
+		<EzColumn key={"title"} title={"Name"} />
+		<EzColumn key={"author"} title={"Gender"} />
 		<CostumButton key={"custom"} title={"Actions"} isWitoutData />
-	</Grid>);
+	</EzGrid>);
 }
 
 const CostumButton = props => {
