@@ -71,7 +71,6 @@ const Grid = props => {
 		return <div>No data</div>;
 
 	if(!rows){
-		initRows();
 		return <Loader></Loader>;
 	}
 	else {
