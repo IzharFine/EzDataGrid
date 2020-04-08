@@ -11,7 +11,7 @@ npm install ez-data-grid --save
 
 ## Usage simple example
 
-```react
+```jsx
 import React from 'react';
 import EzGrid, { EzColumn } from 'ez-data-grid';
 
@@ -84,7 +84,7 @@ Describes if this row have data to display from EzGrid data or it`s for custom.
 #### Example of custom button:
 
 
-```react
+```jsx
    ../
 
   const CostumButton = props => {
