@@ -90,6 +90,7 @@ Describes if this row have data to display from EzGrid data or it`s for custom.
    ../
 
 const CostumButton = props => {
+
     const customClick = (e) => {
         let rowData = props.parent;
     }
