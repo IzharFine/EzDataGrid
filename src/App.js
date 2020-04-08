@@ -41,8 +41,6 @@ const CostumButton = props => {
 	
 	const customClick = (e) => {
 		//let rowData = props.parent;
-		
-		debugger;
 	}
 
 	return (

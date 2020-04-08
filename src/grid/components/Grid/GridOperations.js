@@ -66,7 +66,6 @@ export const removeFilter = (columnId, rows) => {
 }
 
 export const onSearchChanged = (element, rows) => {
-    debugger;
     let rowsToShow = [];
     let value = element.target.value;
     

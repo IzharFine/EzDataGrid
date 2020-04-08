@@ -20,7 +20,7 @@ export const adaptRowsData = (data, childrens) => {
 
 export const onFilterChanged = (inputValue, columnId, operatorHandler, rows, setPageNumber) => {
     let rowsToShow = [];
-
+    
     if(inputValue){
         rows.forEach(row => {
             let found = false;
