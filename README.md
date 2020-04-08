@@ -3,6 +3,9 @@
 
 Light easy to use free open source to create custom React data grids.
 
+## Demo
+https://izharfine.com/ezdatagrid/
+
 ## Installation
 
 ```bash
