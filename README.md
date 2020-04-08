@@ -15,7 +15,6 @@ npm install ez-data-grid --save
 import React from 'react';
 import ReactDOM from 'react-dom';
 import EzGrid, { EzColumn } from 'ez-data-grid';
-import styled from 'styled-components';
 
 let mockData = [
   { id: 0, title: "Izhar Fine", gender: "male" },
