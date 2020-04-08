@@ -94,7 +94,7 @@ Describes if this row have data to display from EzGrid data or it`s for custom.
     }
 
     return (
-        <div type="button" onClick={customClick}>
+        <div onClick={customClick}>
           CLICK
         </div>
     )
