@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, RowData} from '../Row/Row';
+import { Row, RowData } from '../Row/Row';
 import { ColumnData } from '../Column/Column';
 import styled from 'styled-components';
 
@@ -107,6 +107,8 @@ export const sortByColumn = (columnId, isAsc, rowsToShow) => {
 }
 
 export const renderRows = (childrens, pageNumber, rowsInPage, rowsToShow, disableChooseRows) => {
+    const rowMinWidth = calculateRowMinWidth(childrens.length, disableChooseRows);
+    
     let startingRow = pageNumber * rowsInPage;
     let endingRow = startingRow + rowsInPage >= rowsToShow.length ? rowsToShow.length : startingRow + rowsInPage;
 
@@ -114,7 +116,7 @@ export const renderRows = (childrens, pageNumber, rowsInPage, rowsToShow, disabl
         <NoResults>No results</NoResults> :
         rowsToShow.slice(startingRow, endingRow).map((row, rowIndex) => { 
         return (
-        <Row index={rowIndex} key={rowIndex} disableChooseRows={disableChooseRows} rowData={row}>
+        <Row index={rowIndex} key={rowIndex} disableChooseRows={disableChooseRows} rowData={row} rowMinWidth={rowMinWidth} >
             {childrens.map(column => {
                 return(
                     React.cloneElement(column, {
@@ -127,6 +129,18 @@ export const renderRows = (childrens, pageNumber, rowsInPage, rowsToShow, disabl
         </Row>);
         })
     );
+}
+
+const calculateRowMinWidth = (childrensLength, disableChooseRows) => {
+    // Gets the total column width (with padding and margin) - for overflow behavior. 
+    // 88 = ColumnWidth
+    let rowLength = childrensLength * 88;
+
+    // if disableChooseRows add his total width too.
+    if(!disableChooseRows)
+        rowLength += 46;
+    
+    return rowLength;
 }
 
 const NoResults = styled.div`

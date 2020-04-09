@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 const Header = props => {
     const [isCheckedAll, setIsCheckedAll] = useState(false);
+    const headerRef = React.createRef();
 
     const handleChooseAllClick = () => {
         let isChecked = !isCheckedAll;
@@ -10,8 +11,12 @@ const Header = props => {
         setIsCheckedAll(isChecked);
     }
 
+    useEffect(()=>{
+        headerRef.current.scrollLeft = props.leftScroll;
+    }, [headerRef, props.leftScroll]);
+
     return (
-    <HeaderWrapper>
+    <HeaderWrapper ref={headerRef}>
         {!props.disableChooseRows && 
         <CheckBoxWrapper>
                 <ChooseRowsCheckBox type="checkbox" checked={isCheckedAll} onClick={handleChooseAllClick} readOnly />
@@ -60,7 +65,9 @@ const HeaderColumn = props => {
     return(
     <HeaderColumnWrapper key={props.index} isWithoutData={props.isWithoutData}>
         <HeaderValueWrapper >
-            {props.value}
+            <ValueWrapper>
+                {props.value}
+            </ValueWrapper>
             {!props.isWithoutData && !props.disableFilters && <FilterButton isFiltered={isFiltered} onClick={onFilterValueClickHandler}>🝖</FilterButton>}
             {props.isWithoutData || props.disableSorting ? null : isAsc ? 
             <BottomSortArrow disableFilters={props.disableFilters} onClick={handleSortClicked} /> :
@@ -69,6 +76,10 @@ const HeaderColumn = props => {
     </HeaderColumnWrapper>
     )
 }
+
+const ValueWrapper = styled.div`
+    
+`;
 
 const CheckBoxWrapper = styled.div`
     position: relative;
@@ -143,6 +154,7 @@ const HeaderColumnWrapper = styled.div`
     align-items: center;
     display:flex;
     transition: .25s linear background-color;
+    min-width: 58px;
 
     &:hover{
         background-color: ${props => props.isWithoutData ? "" : "#eaeaeaab"};
@@ -174,16 +186,20 @@ const HeaderValueWrapper = styled.div`
     &:hover ${FilterButton} {
         opacity: 1;
     }
+
+    &:hover ${ValueWrapper} {
+        display: none;
+    }
 `;
 
 const HeaderWrapper = styled.div`
     display: flex;
-    flex-wrap: wrap;
     min-height: 46px;
     transition: .25s linear background-color;
     z-index: 99;
     box-shadow: 0px 3px 5px -2px rgba(0,0,0,0.75);
     align-items: center;
+    overflow-x: hidden;
 `;
 
 export default Header;

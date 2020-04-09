@@ -12,6 +12,7 @@ const Grid = props => {
 	const [pageNumber, setPageNumber] = useState(0);
 	const [rowsInPage, setRowsInPage] = useState(25);
 	const [filteredList, setFilteredList] = useState([]);
+	const [leftScroll, setLeftScroll] = useState(0);
 	const [settings, setSettings] = useState(
 		{
 			disableFilters: props.settings && props.settings.disableFilters,
@@ -27,6 +28,8 @@ const Grid = props => {
 		setRowsToShow(rowsData);
 	}, [props.children, props.data, rows]);
 
+	//#region  Effects
+
 	useEffect(() => {
 		initRows();
 	}, [props.data]);
@@ -34,6 +37,8 @@ const Grid = props => {
 	useEffect(() => {
 		setSettings(props.settings);
 	}, [props.settings])
+	
+	//#endregion
 
 	const checkAllRows = (isChecked) => {
 		let rowsToUpdate = [...rowsToShow];
@@ -103,7 +108,8 @@ const Grid = props => {
 					addButtonClickHandel={props.addButtonClickHandel}
 				></Filters>
 			}
-			<Header filteredList={filteredList}
+			<Header leftScroll={leftScroll}
+					filteredList={filteredList}
 					disableFilters={settings && settings.disableFilters}
 					disableSorting={settings && settings.disableSorting}
 					checkAllRows={checkAllRows}
@@ -115,7 +121,10 @@ const Grid = props => {
 						setRowsToShow(sortedRowsToShow);
 					}}>
 			</Header>
-			<RowsWrapper>
+			<RowsWrapper onScroll={(ele)=>{
+				if(ele.target.scrollLeft !== leftScroll)
+					setLeftScroll(ele.target.scrollLeft);
+				}}>
 				{renderRows(props.children, pageNumber, rowsInPage, rowsToShow, settings && settings.disableChooseRows)}
 			</RowsWrapper>
 			<Footer setRowsInPage={setRowsInPage}
@@ -131,7 +140,23 @@ const Grid = props => {
 const RowsWrapper = styled.div`
     flex-grow: 1;
     overflow-y: auto;
-    overflow-x: hidden;
+    overflow-x: auto;
+	
+	::-webkit-scrollbar {
+ 		 width: 10px;
+	}
+
+	::-webkit-scrollbar-track {
+		background: #f1f1f1; 
+	}
+	
+	::-webkit-scrollbar-thumb {
+		background: #888; 
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		background: #555;
+	}
 `;
 
 const GridWrapper = styled.div`

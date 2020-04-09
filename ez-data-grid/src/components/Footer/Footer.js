@@ -44,9 +44,9 @@ export const Footer = props => {
             <LastPageSpan>{" / " + finalPage}</LastPageSpan>
             <RightArrow onClick={onRightArrowClick} />
         </ChangePageWrapper>
-        <span>
+        <FooterDataWrapper>
             Showing {startingRow + 1} to {endingRow} of {props.rowsToShow.length} entries
-        </span>
+        </FooterDataWrapper>
         <PagingSelect onChange={onPagingSelectChange}>
             {pagingOptions.map((pagingNumber)=>{
                 return (<PagingOption key={pagingNumber} value={pagingNumber}>{ pagingNumber }</PagingOption>)
@@ -54,6 +54,12 @@ export const Footer = props => {
         </PagingSelect>
     </FooterWrapper>)
 }
+
+const FooterDataWrapper = styled.span`
+  @media (max-width: 470px) {
+    display: none;
+  }
+`;
 
 const PagingOption = styled.option`
 
