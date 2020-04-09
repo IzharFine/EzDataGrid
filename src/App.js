@@ -43,7 +43,7 @@ function App() {
 		}
 	
 		return (
-				<CustomButtonWrapper type="button" onClick={customClick}>
+				<CustomButtonWrapper onClick={customClick}>
 					CLICK
 				</CustomButtonWrapper>
 		)
