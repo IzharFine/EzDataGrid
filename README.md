@@ -80,7 +80,7 @@ Unique key from your EzGrid data param that describes rows you want to render.
 #### title (required)
 The title you want for the row.
 
-#### isWitoutData
+#### isWithoutData
 Describes if this row have data to display from EzGrid data or it`s for custom.
 
 #### Example of custom button:
@@ -107,7 +107,7 @@ const CostumButton = props => {
     <EzColumn key="id" title="Id"></EzColumn>
     <EzColumn key="gender" title="Gender"></EzColumn>
     <EzColumn key="title" title="Title"></EzColumn>
-    <CostumButton key={"custom"} title={"Actions"} isWitoutData />
+    <CostumButton key={"custom"} title={"Actions"} isWithoutData />
 </EzGrid>
 
 ../

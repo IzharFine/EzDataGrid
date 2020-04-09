@@ -9,11 +9,11 @@ export const Column = props => {
 }
 
 export class ColumnData {
-	constructor(id, value, index, isWitoutData){
+	constructor(id, value, index, isWithoutData){
         this.Id = id;
         this.Value = value;
         this.Index = index;
-        this.IsWitoutData = isWitoutData;
+        this.IsWithoutData = isWithoutData;
 	}
 }
 

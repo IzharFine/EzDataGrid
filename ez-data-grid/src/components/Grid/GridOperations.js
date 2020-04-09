@@ -9,7 +9,7 @@ export const adaptRowsData = (data, childrens) => {
     data.forEach((rowData, rowIndex) => {
         let row = new RowData(rowIndex);
         childrens.forEach((column, columnIndex) => {
-            let columnData = new ColumnData(column.props.title, rowData[column.key], columnIndex, column.props.isWitoutData);
+            let columnData = new ColumnData(column.props.title, rowData[column.key], columnIndex, column.props.isWithoutData);
             row.Columns[column.props.title] = columnData;
         });
         rowsData.push(row);	
@@ -73,7 +73,7 @@ export const onSearchChanged = (element, rows) => {
         let found = false;
 
         Object.keys(row.Columns).forEach(columnId => {
-            if(!row.Columns[columnId].IsWitoutData &&
+            if(!row.Columns[columnId].IsWithoutData &&
                 row.Columns[columnId].Value.toString().toLowerCase().indexOf(value.trim().toLowerCase()) !== -1){
                 found = true;
                 return;

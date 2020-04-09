@@ -22,13 +22,13 @@ const Header = props => {
             disableSorting={props.disableSorting}
             disableFilters={props.disableFilters}
             onOpenFilterClicked={props.onOpenFilterClicked}
-            isWitoutData={column.props.isWitoutData}
+            isWithoutData={column.props.isWithoutData}
             value={column.props.title}
             key={index}
             index={index}
             filteredList={props.filteredList}
             sortByColumn={(value, isAsc) => {
-                !column.props.isWitoutData && props.sortByColumn(value, isAsc);
+                !column.props.isWithoutData && props.sortByColumn(value, isAsc);
             }}></HeaderColumn>);
         })}
     </HeaderWrapper>
@@ -58,11 +58,11 @@ const HeaderColumn = props => {
     }
 
     return(
-    <HeaderColumnWrapper key={props.index} isWitoutData={props.isWitoutData}>
+    <HeaderColumnWrapper key={props.index} isWithoutData={props.isWithoutData}>
         <HeaderValueWrapper >
             {props.value}
-            {!props.isWitoutData && !props.disableFilters && <FilterButton isFiltered={isFiltered} onClick={onFilterValueClickHandler}>🝖</FilterButton>}
-            {props.isWitoutData || props.disableSorting ? null : isAsc ? 
+            {!props.isWithoutData && !props.disableFilters && <FilterButton isFiltered={isFiltered} onClick={onFilterValueClickHandler}>🝖</FilterButton>}
+            {props.isWithoutData || props.disableSorting ? null : isAsc ? 
             <BottomSortArrow disableFilters={props.disableFilters} onClick={handleSortClicked} /> :
             <TopSortArrow disableFilters={props.disableFilters} onClick={handleSortClicked} />}
         </HeaderValueWrapper>
@@ -145,7 +145,7 @@ const HeaderColumnWrapper = styled.div`
     transition: .25s linear background-color;
 
     &:hover{
-        background-color: ${props => props.isWitoutData ? "" : "#eaeaeaab"};
+        background-color: ${props => props.isWithoutData ? "" : "#eaeaeaab"};
 	}
 `;
 

@@ -81,7 +81,7 @@ const Grid = props => {
 		return <Loader></Loader>;
 	}
 	else {
-		let unFilteredColumns = props.children.filter(columns => !columns.props.isWitoutData);
+		let unFilteredColumns = props.children.filter(columns => !columns.props.isWithoutData);
 		let unfilteredColumnsTitles = unFilteredColumns.map(column => column.props.title);
 		let unfilteredColumnsIds = unFilteredColumns.map(column => column.key);
 								   
