@@ -55,6 +55,8 @@ function App() {
 		<EzColumn key={"index"} title={"Id"} />
 		<EzColumn key={"name"} title={"Name"} />
 		<EzColumn key={"gender"} title={"Gender"} />
+		<EzColumn key={"company"} title={"Company"} />
+		<EzColumn key={"email"} title={"Email"} />
 		<CostumButton key={"custom"} title={"Actions"} isWithoutData />
 	</EzGrid>);
 }

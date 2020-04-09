@@ -89,8 +89,25 @@ const FiltersWrapper = styled.div`
     padding-bottom: .5rem;
     padding-top: .5rem;
     display: flex;
-    min-height: 38px;
+    min-height: 48px;
     border-bottom: 1px solid #c8c8c8;
+    overflow-x: auto;
+
+    ::-webkit-scrollbar {
+ 		 width: 10px;
+	}
+
+	::-webkit-scrollbar-track {
+		background: #f1f1f1; 
+	}
+	
+	::-webkit-scrollbar-thumb {
+		background: #888; 
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		background: #555;
+	}
 `;
 
 export default Filters;
