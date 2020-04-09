@@ -85,7 +85,7 @@ const ChooseRowsCheckBox = styled.input`
 `;
 
 const FilterButton = styled.div`
-    font-size: 14px;
+    font-size: 18px;
     opacity: 0;
     margin-bottom: 0.2rem;
     margin-left: 0.35rem;
@@ -101,9 +101,9 @@ const FilterButton = styled.div`
 `;
 
 const TopSortArrow = styled.div`
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
-    border-bottom: 7px solid #4f4f4f;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-bottom: 9px solid #4f4f4f;
     margin-bottom: 0.45rem;
     opacity: 0;
     transition: .25s linear all;
@@ -111,14 +111,14 @@ const TopSortArrow = styled.div`
     cursor: pointer;
 
     &:hover{
-        border-bottom: 7px solid black;
+        border-bottom: 9px solid black;
     }
 `
 
 const BottomSortArrow = styled.div`
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
-    border-top: 7px solid #4f4f4f;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-top: 9px solid #4f4f4f;
     margin-bottom: 0.55rem;
     opacity: 0;
     transition: .25s linear all;
@@ -126,7 +126,7 @@ const BottomSortArrow = styled.div`
     cursor: pointer;
 
     &:hover{
-        border-top: 7px solid black;
+        border-top: 9px solid black;
     }
 `
 
