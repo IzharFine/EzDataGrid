@@ -88,7 +88,7 @@ const Grid = props => {
 		return (
 		<GridWrapper>
 			{	// Filters wrapper includes: search bar, filter labels, add button.
-				!settings.disableFilters &&
+				settings && !settings.disableFilters &&
 				<Filters
 					onSearchChanged={onSearchChangedHandler} 
 					onFilterChanged={onFilterChangedHandler} 
@@ -104,11 +104,11 @@ const Grid = props => {
 				></Filters>
 			}
 			<Header filteredList={filteredList}
-					disableFilters={settings.disableFilters}
-					disableSorting={settings.disableSorting}
+					disableFilters={settings && settings.disableFilters}
+					disableSorting={settings && settings.disableSorting}
 					checkAllRows={checkAllRows}
 					data={props.children} 
-					disableChooseRows={settings.disableChooseRows}
+					disableChooseRows={settings && settings.disableChooseRows}
 					onOpenFilterClicked={onOpenFilterClicked}
 					sortByColumn={(value, isAsc) => {
 						let sortedRowsToShow = sortByColumn(value, isAsc, rowsToShow);
@@ -116,7 +116,7 @@ const Grid = props => {
 					}}>
 			</Header>
 			<RowsWrapper>
-				{renderRows(props.children, pageNumber, rowsInPage, rowsToShow, settings.disableChooseRows)}
+				{renderRows(props.children, pageNumber, rowsInPage, rowsToShow, settings && settings.disableChooseRows)}
 			</RowsWrapper>
 			<Footer setRowsInPage={setRowsInPage}
 					rowsToShow={rowsToShow}
