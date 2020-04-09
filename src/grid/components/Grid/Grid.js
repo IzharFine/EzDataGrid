@@ -88,7 +88,7 @@ const Grid = props => {
 		return (
 		<GridWrapper>
 			{	// Filters wrapper includes: search bar, filter labels, add button.
-				settings && !settings.disableFilters &&
+				(!settings || (settings && !settings.disableFilters)) &&
 				<Filters
 					onSearchChanged={onSearchChangedHandler} 
 					onFilterChanged={onFilterChangedHandler} 
