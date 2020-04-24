@@ -64,7 +64,7 @@ const HeaderColumn = props => {
 
     return(
     <HeaderColumnWrapper key={props.index} isWithoutData={props.isWithoutData}>
-        <HeaderValueWrapper >
+        <HeaderValueWrapper isWithoutData={props.isWithoutData}>
             <ValueWrapper>
                 {props.value}
             </ValueWrapper>
@@ -188,7 +188,7 @@ const HeaderValueWrapper = styled.div`
     }
 
     &:hover ${ValueWrapper} {
-        display: none;
+        display: ${props => props.isWithoutData ? "block" : "none"};
     }
 `;
 

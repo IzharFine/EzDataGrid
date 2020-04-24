@@ -55,10 +55,11 @@ function App() {
 	
 	
 	return (
-	<EzGrid data={accounts} settings={settings} onValueChange={(value, parent, id, prevValue)=>{
+	<EzGrid data={accounts} settings={settings} onValueChange={(currentValue, parent, columnId, prevValue) => {
 		debugger;
+		// Handle the value change here.
 	}}>
-		<EzColumn key={"index"} title={"Id"} type={"number"} editable />
+		<EzColumn key={"index"} title={"Id"} />
 		<EzColumn key={"name"} title={"Name"} type={"text"} editable />
 		<EzColumn key={"company"} title={"Company"} type={"text"} editable />
 		<EzColumn key={"email"} title={"Email"} type={"text"} editable />
