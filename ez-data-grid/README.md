@@ -1,4 +1,4 @@
-# Ez Data Grid
+# EZ data-grid
 
 
 Light easy to use free open source to create custom React data grids. <br/>
@@ -17,10 +17,10 @@ import React, { useState } from 'react';
 import EzGrid, { EzColumn } from 'ez-data-grid';
 
 function Example() {
-	const [mockData, setMockData] = useState([
-	    { id: 0, name: "Izhar Fine", gender: "male", company: "home" },
-	    { id: 1, name: "Tamara Vaisman", gender: "female", company: "mall" },
-	    { id: 2, name: "Moshe Cohen", gender: "male", company: "renegade" }
+ const [mockData, setMockData] = useState([
+	    { id: 0, name: "Izhar Fine", gender: "male", company: "home", isActive: true },
+	    { id: 1, name: "Tamara Vaisman", gender: "female", company: "mall", isActive: true },
+	    { id: 2, name: "Moshe Cohen", gender: "male", company: "renegade", isActive: false }
 	]);
 
 	const [settings, setSettings] = useState(
@@ -34,10 +34,9 @@ function Example() {
 	<EzGrid data={mockData} settings={settings} onValueChange={(currentValue, parent, columnId, prevValue) => {
 	     // Handle the value change here.
 	}}>
-	    <EzColumn key={"index"} title={"Id"} />
+	    <EzColumn key={"id"} title={"Id"} />
 	    <EzColumn key={"name"} title={"Name"} type={"text"} editable />
 	    <EzColumn key={"company"} title={"Company"} type={"text"} editable />
-	    <EzColumn key={"email"} title={"Email"} type={"text"} editable />
 	    <EzColumn key={"isActive"} title={"Active"} type={"checkbox"} editable />
 	</EzGrid>);
 }
