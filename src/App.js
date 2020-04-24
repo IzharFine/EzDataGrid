@@ -8,11 +8,15 @@ import styled from 'styled-components';
 // onSearchChanged - on search changed call back, returns the search input value(function).
 // onPageChangeHandler - on page navigation call back, returns the page number (function).
 // addButtonClickHandel - creates add button above the grid - that event will triger when the button clicked, returns the column titles and ids (function).
+// onValueChange - event handler when value change, returns new value, row parent, columnId, prev value.
 
 // Grid settings:
 // disableFilters - disable filters (default enable).
 // disableChooseRows - disable choose rows (default enable).
 // disableSorting - disable sorting (default enable);
+
+// Column props:
+// key, title, type, editable, isWithoutData
 
 function App() {
 	const [accounts, setAccounts] = useState(null);
@@ -51,12 +55,15 @@ function App() {
 	
 	
 	return (
-	<EzGrid data={accounts} settings={settings} >
-		<EzColumn key={"index"} title={"Id"} />
-		<EzColumn key={"name"} title={"Name"} />
-		<EzColumn key={"gender"} title={"Gender"} />
-		<EzColumn key={"company"} title={"Company"} />
-		<EzColumn key={"email"} title={"Email"} />
+	<EzGrid data={accounts} settings={settings} onValueChange={(value, parent, id, prevValue)=>{
+		
+	}}>
+		<EzColumn key={"index"} title={"Id"} type={"number"} editable />
+		<EzColumn key={"name"} title={"Name"} type={"text"} editable />
+		<EzColumn key={"company"} title={"Company"} type={"text"} />
+		<EzColumn key={"email"} title={"Email"} type={"text"} editable />
+		<EzColumn key={"registered"} title={"Registered"} type={"date"} editable />
+		<EzColumn key={"isActive"} title={"Active"} type={"checkbox"} editable />
 		<CostumButton key={"custom"} title={"Actions"} isWithoutData />
 	</EzGrid>);
 }

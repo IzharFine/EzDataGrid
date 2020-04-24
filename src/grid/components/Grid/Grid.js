@@ -83,7 +83,7 @@ const Grid = props => {
 		return <div>No data</div>;
 
 	if(!rows){
-		return <Loader></Loader>;
+		return <Loader />;
 	}
 	else {
 		let unFilteredColumns = props.children.filter(columns => !columns.props.isWithoutData);
@@ -125,7 +125,7 @@ const Grid = props => {
 				if(ele.target.scrollLeft !== leftScroll)
 					setLeftScroll(ele.target.scrollLeft);
 				}}>
-				{renderRows(props.children, pageNumber, rowsInPage, rowsToShow, settings && settings.disableChooseRows)}
+				{renderRows(props.children, pageNumber, rowsInPage, rowsToShow, settings && settings.disableChooseRow, props.onValueChange)}
 			</RowsWrapper>
 			<Footer setRowsInPage={setRowsInPage}
 					rowsToShow={rowsToShow}

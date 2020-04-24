@@ -188,7 +188,7 @@ const HeaderValueWrapper = styled.div`
     }
 
     &:hover ${ValueWrapper} {
-        display: none;
+        /*display: none;*/
     }
 `;
 

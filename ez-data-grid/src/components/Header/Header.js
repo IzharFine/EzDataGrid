@@ -19,7 +19,7 @@ const Header = props => {
     <HeaderWrapper ref={headerRef}>
         {!props.disableChooseRows && 
         <CheckBoxWrapper>
-                <ChooseRowsCheckBox type="checkbox" checked={isCheckedAll} onClick={handleChooseAllClick} readOnly />
+                <ChooseRowsCheckBox type="checkbox" checked={isCheckedAll} onClick={handleChooseAllClick} />
         </CheckBoxWrapper>}
         {props.data.map((column, index) => {
             return (
