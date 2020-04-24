@@ -5,9 +5,9 @@ import styled from 'styled-components';
 // Grid params:
 // data - array of json objects describes your data (JSON object array).
 // settings - settings of the grid (JSON object).
-// onSearchChanged - on search changed call back, returns the search input value(function).
-// onPageChangeHandler - on page navigation call back, returns the page number (function).
-// addButtonClickHandel - creates add button above the grid - that event will triger when the button clicked, returns the column titles and ids (function).
+// onSearchChange - on search changed call back, returns the search input value(function).
+// onPageChange - on page navigation call back, returns the page number (function).
+// onAddButtonClick - creates add button above the grid - that event will triger when the button clicked, returns the column titles and ids (function).
 // onValueChange - event handler when value change, returns new value, row parent, columnId, prev value.
 
 // Grid settings:

@@ -3,7 +3,7 @@ import Header from '../Header/Header';
 import Filters from '../Filters/Filters';
 import Footer from '../Footer/Footer';
 import styled from 'styled-components'
-import { adaptRowsData, onFilterChanged, onSearchChanged, sortByColumn, renderRows, removeFilter } from './GridOperations';
+import { adaptRowsData, onFilterChanged, onSearchChange, sortByColumn, renderRows, removeFilter } from './GridOperations';
 import Loader from '../Loader/Loader';
 
 const Grid = props => {
@@ -57,11 +57,11 @@ const Grid = props => {
 		setFilteredList([ ...filteredList, filterText]);
 	}
 
-	const onSearchChangedHandler = ele => {
-		if(props.onSearchChanged)
-			props.onSearchChanged(ele.target.value);
+	const onSearchChangeHandler = ele => {
+		if(props.onSearchChange)
+			props.onSearchChange(ele.target.value);
 		else{
-			let rowsToShow = onSearchChanged(ele, rows);
+			let rowsToShow = onSearchChange(ele, rows);
 			setPageNumber(0);
 			setRowsToShow(rowsToShow);
 		}
@@ -72,8 +72,8 @@ const Grid = props => {
 	}
 
 	const onPageChangeHandler = (pageNumber) => {
-		if(props.onPageChangeHandler)
-			props.onPageChangeHandler(pageNumber)
+		if(props.onPageChange)
+			props.onPageChange(pageNumber + 1)
 		else{
 			setPageNumber(pageNumber);
 		}
@@ -95,7 +95,7 @@ const Grid = props => {
 			{	// Filters wrapper includes: search bar, filter labels, add button.
 				(!settings || (settings && !settings.disableFilters)) &&
 				<Filters
-					onSearchChanged={onSearchChangedHandler} 
+					onSearchChange={onSearchChangeHandler} 
 					onFilterChanged={onFilterChangedHandler} 
 					columnTitles={unfilteredColumnsTitles} 
 					columnIds={unfilteredColumnsIds}
@@ -105,7 +105,7 @@ const Grid = props => {
 					}}
 					onCloseFilterClicked={onCloseFilterClicked}
 					filteredList={filteredList}
-					addButtonClickHandel={props.addButtonClickHandel}
+					onAddButtonClick={props.onAddButtonClick}
 				></Filters>
 			}
 			<Header leftScroll={leftScroll}

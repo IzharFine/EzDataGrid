@@ -4,15 +4,15 @@ import FilteredLabelToActions from './FilteredLabelToActions';
 
 function Filters(props){
     return (<FiltersWrapper>
-                <SearchInput placeholder="Search" onChange={props.onSearchChanged}></SearchInput>
+                <SearchInput placeholder="Search" onChange={props.onSearchChange}></SearchInput>
                 <FiltersButtons 
                     onCloseFilterClicked={props.onCloseFilterClicked}
                     onChange={props.onFilterChanged}
                     onRemoveFilter={props.removeFilter}
                     filteredList={props.filteredList} />
-                    {props.addButtonClickHandel && 
+                    {props.onAddButtonClick && 
                     <AddRowButton onClick={() => 
-                        props.addButtonClickHandel(props.columnTitles, props.columnIds)}>ADD
+                        props.onAddButtonClick(props.columnTitles, props.columnIds)}>ADD
                     </AddRowButton>}
             </FiltersWrapper>);
 }
