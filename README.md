@@ -31,11 +31,14 @@ function Example() {
 	});
 
 	return (
-	<EzGrid data={mockData} settings={settings} >
-	    <EzColumn key={"id"} title={"Id"} />
-	    <EzColumn key={"name"} title={"Name"} />
-	    <EzColumn key={"gender"} title={"Gender"} />
-	    <EzColumn key={"company"} title={"Company"} />
+	<EzGrid data={mockData} settings={settings} onValueChange={(currentValue, parent, columnId, prevValue) => {
+	     // Handle the value change here.
+	}}>
+	    <EzColumn key={"index"} title={"Id"} />
+	    <EzColumn key={"name"} title={"Name"} type={"text"} editable />
+	    <EzColumn key={"company"} title={"Company"} type={"text"} editable />
+	    <EzColumn key={"email"} title={"Email"} type={"text"} editable />
+	    <EzColumn key={"isActive"} title={"Active"} type={"checkbox"} editable />
 	</EzGrid>);
 }
 
@@ -51,14 +54,17 @@ Array of JSON objects, that will be that data for the grid rows.
 #### settings 
 JSON object, optional settings for the grid.
 
-#### onSearchChanged - event handler
-Function call back, on search change call back - return the search input value.
+#### onSearchChange - event handler
+Function call back, triggered on search change - return search input value.
 
-#### onPageChangeHandler - event handler 
-Function call back, on page navigation made - return the page number.
+#### onPageChange - event handler
+Function call back, triggered on page changed - return page number.
 
-#### addButtonClickHandel - event handler
-Function call back, creates add button - return the column ids + titles.
+#### onAddButtonClick - event handler
+Function call back, creates add button - return column ids + titles.
+
+#### onValueChange - event handler
+Function call back, triggered on column value change (on editable mode) - return new value, row parent, column id, previous value.
 
 ### Settings(optional):
 
@@ -74,14 +80,20 @@ Disable sorting feature, default: false.
 ## Columns
 ### Params:
 
-#### key (required)
+#### key (required) - string
 Unique key from your EzGrid data param that describes rows you want to render.
 
-#### title (required)
+#### title (required) - string
 The title you want for the row.
 
-#### isWithoutData
-Describes if this row have data to display from EzGrid data or it`s for custom.
+#### isWithoutData - bool
+If this row have no data to take from EzGrid data or it`s for custom.
+
+#### editable - bool
+If this is editable column, if you use it you must provide the type prop as well.
+
+#### type - string
+Set the column type for editable mode. supported types: text, number, checkbox, date.
 
 #### Example of custom button:
 
