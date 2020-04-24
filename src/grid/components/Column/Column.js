@@ -9,7 +9,7 @@ export const Column = props => {
     }, [props.value]);
 
     return (
-            <ValueWrapper title={value.toString()}>
+            <ValueWrapper title={value.toString()} Type={props.type} >
                 {
                     !props.editable ? 
                     value.toString() :
@@ -65,7 +65,7 @@ const ValueWrapper = styled.div`
     background-color: transparent;
     border: none;
     white-space: nowrap;
-    display: block;
+    display: ${props => props.Type === "checkbox" ? "flex" : "block"};
     align-items: center;
     text-overflow: ellipsis;
     overflow: hidden;
