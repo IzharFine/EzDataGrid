@@ -12,7 +12,7 @@ export const Column = props => {
             <ValueWrapper title={value.toString()}>
                 {
                     !props.editable ? 
-                    value :
+                    value.toString() :
                     <InputWrapper type={props.type} value={value} checked={value.toString().toLowerCase() === "true"} onChange={(e)=> {
                         let currentValue = props.type === "checkbox" ? e.target.checked : e.target.value;
                         setValue(currentValue);
@@ -38,7 +38,7 @@ const InputWrapper = styled.input`
     line-height: 2;
     padding-left: .25rem;
     border-radius: .25rem;
-    width: 100%;
+    width:  ${props => props.type === "checkbox" ? "auto" : "100%" }; 
     transition: all .15s ease-in-out;
     background-color: transparent;
     border: none;

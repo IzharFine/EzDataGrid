@@ -16,7 +16,7 @@ export const Row = (props) => {
 	return (<RowWrapper key={props.index} index={props.index} rowMinWidth={props.rowMinWidth}>
 				{!props.disableChooseRows && 
 				<CheckBoxWrapper>
-					<ChooseRowsCheckBox type="checkbox" checked={IsChecked} onClick={handleChooseRowClick} />
+					<ChooseRowsCheckBox type="checkbox" checked={IsChecked} onClick={handleChooseRowClick} readOnly />
 				</CheckBoxWrapper>
 				}
 				{props.children.map((column, index) => {

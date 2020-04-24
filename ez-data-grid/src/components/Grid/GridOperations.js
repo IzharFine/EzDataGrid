@@ -106,7 +106,7 @@ export const sortByColumn = (columnId, isAsc, rowsToShow) => {
     );
 }
 
-export const renderRows = (childrens, pageNumber, rowsInPage, rowsToShow, disableChooseRows) => {
+export const renderRows = (childrens, pageNumber, rowsInPage, rowsToShow, disableChooseRows, onValueChange) => {
     const rowMinWidth = calculateRowMinWidth(childrens.length, disableChooseRows);
     
     let startingRow = pageNumber * rowsInPage;
@@ -122,7 +122,8 @@ export const renderRows = (childrens, pageNumber, rowsInPage, rowsToShow, disabl
                     React.cloneElement(column, {
                         id: column.key,
                         value: row.Columns[column.props.title].Value,
-                        parent: row
+                        parent: row,
+                        onValueChange
                     })
                 )
             })}

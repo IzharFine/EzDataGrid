@@ -56,13 +56,12 @@ function App() {
 	
 	return (
 	<EzGrid data={accounts} settings={settings} onValueChange={(value, parent, id, prevValue)=>{
-		
+		debugger;
 	}}>
 		<EzColumn key={"index"} title={"Id"} type={"number"} editable />
 		<EzColumn key={"name"} title={"Name"} type={"text"} editable />
-		<EzColumn key={"company"} title={"Company"} type={"text"} />
+		<EzColumn key={"company"} title={"Company"} type={"text"} editable />
 		<EzColumn key={"email"} title={"Email"} type={"text"} editable />
-		<EzColumn key={"registered"} title={"Registered"} type={"date"} editable />
 		<EzColumn key={"isActive"} title={"Active"} type={"checkbox"} editable />
 		<CostumButton key={"custom"} title={"Actions"} isWithoutData />
 	</EzGrid>);

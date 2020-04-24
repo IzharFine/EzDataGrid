@@ -168,7 +168,7 @@ const HeaderValueWrapper = styled.div`
     line-height: 1.5;
     border-radius: .25rem;
     width: 100%;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: all .15s ease-in-out;
     background-color: transparent;
     border: none;
     display: flex;
@@ -188,7 +188,7 @@ const HeaderValueWrapper = styled.div`
     }
 
     &:hover ${ValueWrapper} {
-        /*display: none;*/
+        display: none;
     }
 `;
 
