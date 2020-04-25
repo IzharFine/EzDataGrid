@@ -30,6 +30,10 @@ export const FilteredLabelToActions = props => {
         props.onCloseButtonClick(props.filterText, value);
     }
 
+    let selectedOption = Object.keys(eFilterOperator).filter(key => {
+        return eFilterOperator[key] === operator;
+    });
+
     return(
         !isClicked?
         <FilteredValue key={props.filterText} onClick={()=>setIsClicked(!isClicked)} haveFilter={value} >
@@ -41,7 +45,7 @@ export const FilteredLabelToActions = props => {
         :
         <FilteredActionsWrapper>
             <SearchInput placeholder={props.filterText} onChange={onFilterActionInputChanged} isSmall value={value || ""} ></SearchInput>
-            <OperatorSelect onChange={onFilterActionSelectChanged}>
+            <OperatorSelect onChange={onFilterActionSelectChanged} defaultValue={selectedOption}>
                 {Object.keys(eFilterOperator).map((key, keyIndex) => {
                     return (
                     <OperatorOption key={keyIndex} value={key}>

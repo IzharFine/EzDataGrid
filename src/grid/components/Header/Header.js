@@ -95,14 +95,14 @@ const FilterButton = styled.div`
     opacity: 0;
     margin-bottom: 0.2rem;
     margin-left: 0.35rem;
-    color: ${props => props.isFiltered ? "#ce7c00" : "#4f4f4f"};
+    color: ${props => props.isFiltered ? "#008000" : "#4f4f4f"};
     -webkit-transition: .25s linear all;
     transition: .25s linear all;
     margin-left: auto;
     cursor: pointer;
 
     &:hover{
-        color: ${props => props.isFiltered ? "#ff9900" : "black"};
+        color: ${props => props.isFiltered ? "#00b300" : "black"};
     }
 `;
 
