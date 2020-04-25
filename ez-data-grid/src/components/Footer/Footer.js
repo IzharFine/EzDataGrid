@@ -29,9 +29,12 @@ export const Footer = props => {
     }
 
     const onPagingSelectChange = (e) => {
-        let pagingNumber = e.target.value * 1;
+        let rowsInPage = e.target.value * 1;
+        props.setRowsInPage(rowsInPage);
 
-        props.setRowsInPage(pagingNumber);
+        let finalPage = Math.ceil(props.rowsToShow.length / rowsInPage) - 1;
+        if(props.pageNumber * 1 > finalPage)
+            props.setPageNumber(finalPage);
     }
 
     const pagingOptions = [25, 50, 100];
