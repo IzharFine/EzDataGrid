@@ -149,7 +149,7 @@ const HeaderColumnWrapper = styled.div`
     align-items: center;
     display:flex;
     transition: .25s linear background-color;
-    min-width: 58px;
+    min-width: 80px;
 
     &:hover{
         background-color: ${props => props.isWithoutData ? "" : "#eaeaeaab"};

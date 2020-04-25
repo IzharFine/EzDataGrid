@@ -132,8 +132,8 @@ export const renderRows = (childrens, pageNumber, rowsInPage, rowsToShow, disabl
 
 export const calculateRowMinWidth = (childrensLength, disableChooseRows) => {
     // Gets the total column width (with padding and margin) - for overflow behavior. 
-    // 88 = ColumnWidth
-    let rowLength = childrensLength * 88;
+    // 110 = ColumnWidth
+    let rowLength = childrensLength * 110;
 
     // if disableChooseRows add his total width too.
     if(!disableChooseRows)

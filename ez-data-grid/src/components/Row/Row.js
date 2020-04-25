@@ -74,7 +74,7 @@ const ColumnWrapper = styled.div`
     position: relative;
     width: 100%;
     min-height: 46px;
-	min-width: 58px;
+	min-width: 80px;
     padding-right: 15px;
     padding-left: 15px;
     align-items: center;
