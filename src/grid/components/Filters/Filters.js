@@ -94,7 +94,7 @@ const FiltersWrapper = styled.div`
     overflow-x: auto;
 
     ::-webkit-scrollbar {
- 		 width: 10px;
+        height: 6px;
 	}
 
 	::-webkit-scrollbar-track {
