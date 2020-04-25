@@ -123,7 +123,7 @@ const Grid = props => {
 						setRowsToShow(sortedRowsToShow);
 					}}>
 				</Header>
-				{renderRows(props.children, pageNumber, rowsInPage, rowsToShow, settings && settings.disableChooseRow, props.onValueChange, rowMinWidth)}
+				{renderRows(props.children, pageNumber, rowsInPage, rowsToShow, settings && settings.disableChooseRows, props.onValueChange, rowMinWidth)}
 			</RowsWrapper>
 			<Footer setRowsInPage={setRowsInPage}
 					rowsToShow={rowsToShow}

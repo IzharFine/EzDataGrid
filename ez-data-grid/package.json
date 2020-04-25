@@ -1,6 +1,6 @@
 {
   "name": "ez-data-grid",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Light easy to use free open source to create custom React data grids.",
   "main": "./build/index.js",
   "scripts": {
