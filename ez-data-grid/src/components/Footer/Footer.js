@@ -72,6 +72,7 @@ const PagingSelect = styled.select`
     background-color: #fff;
     background-clip: padding-box;
     border: 1px solid #ced4da;
+    font-size: 12px;
 `;
 
 const LastPageSpan = styled.span`
@@ -118,6 +119,7 @@ const ChangePageInput = styled.input`
     background-color: #fff;
     background-clip: padding-box;
     border: 1px solid #ced4da;
+    font-size: 12px;
 `;
 
 const FooterWrapper = styled.div`
