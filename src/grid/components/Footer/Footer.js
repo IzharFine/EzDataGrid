@@ -126,6 +126,7 @@ const FooterWrapper = styled.div`
     min-height: 20px;
     border-top: 1px solid #c8c8c8;
     align-items: center;
+    font-size: 12px;
 `;
 
 export default Footer;

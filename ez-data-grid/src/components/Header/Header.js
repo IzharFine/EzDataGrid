@@ -78,7 +78,7 @@ const HeaderColumn = props => {
 }
 
 const ValueWrapper = styled.div`
-    
+    font-size: 13px;
 `;
 
 const CheckBoxWrapper = styled.div`
@@ -145,9 +145,9 @@ const HeaderColumnWrapper = styled.div`
     flex-basis: 0;
     -ms-flex-positive: 1;
     flex-grow: 1;
-    max-width: 100%;
+    /*max-width: 100%;*/
     position: relative;
-    width: 100%;
+    /*width: 100%;*/
     min-height: 46px;
     padding-right: 15px;
     padding-left: 15px;

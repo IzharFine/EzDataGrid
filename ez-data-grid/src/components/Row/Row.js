@@ -13,7 +13,7 @@ export const Row = (props) => {
 		setIsChecked(!IsChecked);
 	}
 
-	return (<RowWrapper key={props.index} index={props.index} rowMinWidth={props.rowMinWidth}>
+	return (<RowWrapper key={props.index} index={props.index} rowMinWidth={props.rowMinWidth} IsChecked={IsChecked} >
 				{!props.disableChooseRows && 
 				<CheckBoxWrapper>
 					<ChooseRowsCheckBox type="checkbox" checked={IsChecked} onClick={handleChooseRowClick} readOnly />
@@ -56,11 +56,12 @@ const RowWrapper = styled.div`
 	align-items: center;
     min-height: 46px;
     transition: .25s linear background-color;
-	background-color: ${props => props.index % 2 === 0 ? "rgba(6, 6, 6, 0.05)" : "" };
+	background-color: ${props => props.IsChecked ? "rgba(33,150,243,.3)" : props.index % 2 === 0 ? "rgba(172, 172, 172, 0.05)" : "" };
 	min-width: ${props => props.rowMinWidth}px;
+	border-bottom: 1px solid #e2e2e2;
 
 	&:hover{
-		background-color: rgba(211, 211, 211, 0.67);
+		background-color: ${props => props.IsChecked ? "rgba(33,150,243,.3)" : "rgba(33, 150, 243, .1)"};
 	}
 `;
 

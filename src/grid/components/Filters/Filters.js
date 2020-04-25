@@ -75,7 +75,6 @@ const FilteredValuesWrapper = styled.div`
 const SearchInput = styled.input`
     display: inline-flex;
     ${props => props.isSmall ? "padding: .15rem" : "padding: .375rem .75rem"};
-    line-height: 1.5;
     margin-left: 0.25rem;
     background-color: #fff;
     background-clip: padding-box;
@@ -83,13 +82,14 @@ const SearchInput = styled.input`
     border-radius: .25rem;
     outline: none;
     margin-right: .25rem;
+    font-size: 12px;
 `;
 
 const FiltersWrapper = styled.div`
     padding-bottom: .5rem;
     padding-top: .5rem;
     display: flex;
-    min-height: 48px;
+    min-height: 38px;
     border-bottom: 1px solid #c8c8c8;
     overflow-x: auto;
 

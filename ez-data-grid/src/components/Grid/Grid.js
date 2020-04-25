@@ -162,7 +162,7 @@ const RowsWrapper = styled.div`
 const GridWrapper = styled.div`
  	display: flex;
     flex-flow: column;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Roboto, sans-serif;
     height: 100%;
 	max-height: 736px;
 `;

@@ -187,6 +187,7 @@ const FilteredValue = styled.div`
     -webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.55);
     -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.55);
     box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.55);
+    font-size: 12px;
 
     &:hover{
         background-color: ${props => !props.haveFilter ? "#c71818" : "#49cb1b"};

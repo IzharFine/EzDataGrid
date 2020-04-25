@@ -34,8 +34,8 @@ export class ColumnData {
 }
 
 const InputWrapper = styled.input`
-    font-size: 1rem;
-    line-height: 2;
+    font-size: 12px;
+    line-height: 2.8;
     padding-left: .25rem;
     border-radius: .25rem;
     width:  ${props => props.type === "checkbox" ? "auto" : "100%" }; 
@@ -44,7 +44,6 @@ const InputWrapper = styled.input`
     border: none;
     white-space: nowrap;
     display: block;
-    align-items: center;
     text-overflow: ellipsis;
     overflow: hidden;
     outline: none;
@@ -57,8 +56,8 @@ const InputWrapper = styled.input`
 const ValueWrapper = styled.div`
     height: calc(2rem + 2px);
     padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 2.25;
+    font-size: 12px;
+    line-height: 3;
     border-radius: .25rem;
     width: 100%;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;

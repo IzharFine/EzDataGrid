@@ -17,7 +17,7 @@ import React, { useState } from 'react';
 import EzGrid, { EzColumn } from 'ez-data-grid';
 
 function Example() {
- const [mockData, setMockData] = useState([
+ 	const [mockData, setMockData] = useState([
 	    { id: 0, name: "Izhar Fine", gender: "male", company: "home", isActive: true },
 	    { id: 1, name: "Tamara Vaisman", gender: "female", company: "mall", isActive: true },
 	    { id: 2, name: "Moshe Cohen", gender: "male", company: "renegade", isActive: false }
@@ -80,13 +80,13 @@ Disable sorting feature, default: false.
 ### Params:
 
 #### key (required) - string
-Unique key from your EzGrid data param that describes rows you want to render.
+Unique key from your EzGrid data param that describes columns you want to render.
 
 #### title (required) - string
-The title you want for the row.
+The title you want for the column.
 
 #### isWithoutData - bool
-If this row have no data to take from EzGrid data or it`s for custom.
+If this column have no data to take from EzGrid data or it`s for custom.
 
 #### editable - bool
 If this is editable column, if you use it you must provide the type prop as well.
