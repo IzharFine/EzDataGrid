@@ -155,6 +155,7 @@ const OperatorSelect = styled.select`
     border-radius: .25rem;
     outline: none;
     margin-right: .25rem;
+    font-size: 12px;
 `;
 
 const FilteredActionsWrapper = styled.div`
@@ -204,6 +205,7 @@ const SearchInput = styled.input`
     border-radius: .25rem;
     outline: none;
     margin-right: .25rem;
+    font-size: 12px;
 `;
 
 export default FilteredLabelToActions;
