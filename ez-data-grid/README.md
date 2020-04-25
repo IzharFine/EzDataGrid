@@ -17,7 +17,7 @@ import React, { useState } from 'react';
 import EzGrid, { EzColumn } from 'ez-data-grid';
 
 function Example() {
- 	const [mockData, setMockData] = useState([
+	const [mockData, setMockData] = useState([
 	    { id: 0, name: "Izhar Fine", gender: "male", company: "home", isActive: true },
 	    { id: 1, name: "Tamara Vaisman", gender: "female", company: "mall", isActive: true },
 	    { id: 2, name: "Moshe Cohen", gender: "male", company: "renegade", isActive: false }
@@ -47,34 +47,37 @@ export default Example;
 # EzGrid 
 ### Params:
 
-#### data (required)
-Array of JSON objects, that will be that data for the grid rows.
+#### data (required) - Array of JSON objects
+Will be that data for the grid rows.
 
-#### settings 
-JSON object, optional settings for the grid.
+#### settings - JSON object
+Optional settings for the grid.
 
-#### onSearchChange - event handler
-Function call back, triggered on search change - return search input value.
+#### onSearchChange - function
+Event handler call back, triggered on search change - return search input value.
 
-#### onPageChange - event handler
-Function call back, triggered on page changed - return page number.
+#### onPageChange - function
+Event handler call back, triggered on page changed - return page number.
 
-#### onAddButtonClick - event handler
-Function call back, creates add button - return column ids + titles.
+#### onAddButtonClick - function
+Event handler call back, creates add button - return column ids + titles.
 
-#### onValueChange - event handler
-Function call back, triggered on column value change (on editable mode) - return new value, row parent, column id, previous value.
+#### onValueChange - function
+Event handler call back, triggered on column value change (on editable mode) - return new value, row parent, column id, previous value.
 
 ### Settings(optional):
 
-#### disableFilters
+#### disableFilters - bool
 Disable filters feature, default: false.
 
-#### disableChooseRows
+#### disableChooseRows - bool
 Disable multi select feature, default: false.
 
-#### disableSorting
+#### disableSorting - bool
 Disable sorting feature, default: false.
+
+#### maxHeight - string
+Set the grid max-height prop, default: 736px.
 
 ## Columns
 ### Params:

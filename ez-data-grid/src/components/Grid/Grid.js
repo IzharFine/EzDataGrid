@@ -91,7 +91,7 @@ const Grid = props => {
 		let unfilteredColumnsIds = unFilteredColumns.map(column => column.key);
 								   
 		return (
-		<GridWrapper>
+		<GridWrapper maxHeight={props.settings && props.settings.maxHeight}>
 			{	// Filters wrapper includes: search bar, filter labels, add button.
 				(!settings || (settings && !settings.disableFilters)) &&
 				<Filters
@@ -164,7 +164,7 @@ const GridWrapper = styled.div`
     flex-flow: column;
     font-family: Roboto, sans-serif;
     height: 100%;
-	max-height: 736px;
+	max-height: ${props => props.maxHeight ? props.maxHeight : "736px"};
 `;
 
 export default Grid;
