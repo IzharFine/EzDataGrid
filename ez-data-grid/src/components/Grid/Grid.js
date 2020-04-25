@@ -3,7 +3,7 @@ import Header from '../Header/Header';
 import Filters from '../Filters/Filters';
 import Footer from '../Footer/Footer';
 import styled from 'styled-components'
-import { adaptRowsData, onFilterChanged, onSearchChange, sortByColumn, renderRows, removeFilter } from './GridOperations';
+import { adaptRowsData, onFilterChanged, onSearchChange, sortByColumn, renderRows, removeFilter, calculateRowMinWidth } from './GridOperations';
 import Loader from '../Loader/Loader';
 
 const Grid = props => {
@@ -12,7 +12,6 @@ const Grid = props => {
 	const [pageNumber, setPageNumber] = useState(0);
 	const [rowsInPage, setRowsInPage] = useState(25);
 	const [filteredList, setFilteredList] = useState([]);
-	const [leftScroll, setLeftScroll] = useState(0);
 	const [settings, setSettings] = useState(
 		{
 			disableFilters: props.settings && props.settings.disableFilters,
@@ -89,6 +88,7 @@ const Grid = props => {
 		let unFilteredColumns = props.children.filter(columns => !columns.props.isWithoutData);
 		let unfilteredColumnsTitles = unFilteredColumns.map(column => column.props.title);
 		let unfilteredColumnsIds = unFilteredColumns.map(column => column.key);
+		let rowMinWidth = calculateRowMinWidth(props.children.length, settings && settings.disableChooseRows);
 								   
 		return (
 		<GridWrapper maxHeight={props.settings && props.settings.maxHeight}>
@@ -108,7 +108,9 @@ const Grid = props => {
 					onAddButtonClick={props.onAddButtonClick}
 				></Filters>
 			}
-			<Header leftScroll={leftScroll}
+			<RowsWrapper>
+				<Header
+					rowMinWidth={rowMinWidth}
 					filteredList={filteredList}
 					disableFilters={settings && settings.disableFilters}
 					disableSorting={settings && settings.disableSorting}
@@ -120,12 +122,8 @@ const Grid = props => {
 						let sortedRowsToShow = sortByColumn(value, isAsc, rowsToShow);
 						setRowsToShow(sortedRowsToShow);
 					}}>
-			</Header>
-			<RowsWrapper onScroll={(ele)=>{
-				if(ele.target.scrollLeft !== leftScroll)
-					setLeftScroll(ele.target.scrollLeft);
-				}}>
-				{renderRows(props.children, pageNumber, rowsInPage, rowsToShow, settings && settings.disableChooseRow, props.onValueChange)}
+				</Header>
+				{renderRows(props.children, pageNumber, rowsInPage, rowsToShow, settings && settings.disableChooseRow, props.onValueChange, rowMinWidth)}
 			</RowsWrapper>
 			<Footer setRowsInPage={setRowsInPage}
 					rowsToShow={rowsToShow}

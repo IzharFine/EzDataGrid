@@ -3,7 +3,6 @@ import styled from 'styled-components'
 
 const Header = props => {
     const [isCheckedAll, setIsCheckedAll] = useState(false);
-    const headerRef = React.createRef();
 
     const handleChooseAllClick = () => {
         let isChecked = !isCheckedAll;
@@ -11,12 +10,8 @@ const Header = props => {
         setIsCheckedAll(isChecked);
     }
 
-    useEffect(()=>{
-        headerRef.current.scrollLeft = props.leftScroll;
-    }, [headerRef, props.leftScroll]);
-
     return (
-    <HeaderWrapper ref={headerRef}>
+    <HeaderWrapper rowMinWidth={props.rowMinWidth}>
         {!props.disableChooseRows && 
         <CheckBoxWrapper>
                 <ChooseRowsCheckBox type="checkbox" checked={isCheckedAll} onClick={handleChooseAllClick} readOnly />
@@ -200,6 +195,10 @@ const HeaderWrapper = styled.div`
     box-shadow: 0px 3px 5px -2px rgba(0,0,0,0.75);
     align-items: center;
     overflow-x: hidden;
+    min-width: ${props => props.rowMinWidth}px;
+    position: sticky;
+    top: 0px;
+    background-color: white;
 `;
 
 export default Header;

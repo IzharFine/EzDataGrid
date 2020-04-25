@@ -106,9 +106,7 @@ export const sortByColumn = (columnId, isAsc, rowsToShow) => {
     );
 }
 
-export const renderRows = (childrens, pageNumber, rowsInPage, rowsToShow, disableChooseRows, onValueChange) => {
-    const rowMinWidth = calculateRowMinWidth(childrens.length, disableChooseRows);
-    
+export const renderRows = (childrens, pageNumber, rowsInPage, rowsToShow, disableChooseRows, onValueChange, rowMinWidth) => {
     let startingRow = pageNumber * rowsInPage;
     let endingRow = startingRow + rowsInPage >= rowsToShow.length ? rowsToShow.length : startingRow + rowsInPage;
 
@@ -132,7 +130,7 @@ export const renderRows = (childrens, pageNumber, rowsInPage, rowsToShow, disabl
     );
 }
 
-const calculateRowMinWidth = (childrensLength, disableChooseRows) => {
+export const calculateRowMinWidth = (childrensLength, disableChooseRows) => {
     // Gets the total column width (with padding and margin) - for overflow behavior. 
     // 88 = ColumnWidth
     let rowLength = childrensLength * 88;
