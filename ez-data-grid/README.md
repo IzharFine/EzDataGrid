@@ -91,9 +91,6 @@ Unique key from your EzGrid data param that describes columns you want to render
 #### title (required) - string
 The title you want for the column.
 
-#### isWithoutData - bool
-If this column have no data to take from EzGrid data or it`s for custom.
-
 #### editable - bool
 If this is editable column, if you use it you must provide the type prop as well.
 
@@ -103,7 +100,11 @@ Set the column type for editable mode. supported types: text, number, checkbox, 
 #### minWidth - string
 Set the column min-width(only in pixels). default: 80px;
 
-#### Example of custom button:
+#### isWithoutData - bool
+If this column have no data to take from EzGrid data (useful for custom coolumn).
+
+### Custom column:
+You can create your own custom column, this is example for how to do it.
 
 
 ```jsx
