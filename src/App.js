@@ -2,23 +2,6 @@ import React, { useState } from 'react';
 import EzGrid, { EzColumn } from './grid/index';
 import styled from 'styled-components';
 
-// Grid params:
-// data - array of json objects describes your data (JSON object array).
-// settings - settings of the grid (JSON object).
-// onSearchChange - on search changed call back, returns the search input value(function).
-// onPageChange - on page navigation call back, returns the page number (function).
-// onAddButtonClick - creates add button above the grid - that event will triger when the button clicked, returns the column titles and ids (function).
-// onValueChange - event handler when value change, returns new value, row parent, columnId, prev value.
-// onChooseRows - event handler when choose rows, returns the rows that changed.
-
-// Grid settings:
-// disableFilters - disable filters (default enable).
-// disableChooseRows - disable choose rows (default enable).
-// disableSorting - disable sorting (default enable);
-
-// Column props:
-// key, title, type, editable, isWithoutData
-
 function App() {
 	const [accounts, setAccounts] = useState(null);
 	const [settings, setSettings] = useState(
@@ -35,29 +18,20 @@ function App() {
 	}
 
 	const CostumButton = props => {
-	
 		const customClick = (e) => {
 			//let rowData = props.parent;
-			handleFeatchAccounts('posts', setAccounts);
-
-			setSettings({
-				disableFilters: true,
-				disableChooseRows: true,
-				disableSorting: true
-			})
 		}
 	
 		return (
-				<CustomButtonWrapper onClick={customClick}>
-					CLICK
-				</CustomButtonWrapper>
+			<CustomButtonWrapper onClick={customClick}>
+				Click
+			</CustomButtonWrapper>
 		)
 	}
 	
 	
 	return (
 	<EzGrid data={accounts} settings={settings} onValueChange={(currentValue, parent, columnId, prevValue) => {
-		debugger;
 		// Handle the value change here.
 	}} >
 		<EzColumn key={"index"} title={"Id"} />
@@ -71,7 +45,6 @@ function App() {
 
 const handleFeatchAccounts = (data, setAccounts) => {
 	fetchAccounts(data)
-		// Handle response - parses the response status and content
 		.then(response => handleResponse(response))
 		.then(([responseOk, data]) => {
 			if (responseOk) {
@@ -79,11 +52,7 @@ const handleFeatchAccounts = (data, setAccounts) => {
 			} else {
 				throw data;
 			}
-		})
-		.catch(error => {
-			throw error;
-		})
-		.finally(() => {});
+		});
 };
 
 
@@ -109,9 +78,7 @@ const handleResponse = response => {
   }
 }
 
-
 export default App;
-
 
 const CustomButtonWrapper = styled.div`
     transition: all linear .2s;
