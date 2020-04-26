@@ -78,8 +78,6 @@ const handleResponse = response => {
   }
 }
 
-export default App;
-
 const CustomButtonWrapper = styled.div`
     transition: all linear .2s;
     display: flex;
@@ -99,3 +97,5 @@ const CustomButtonWrapper = styled.div`
 		background-color: rgba(211, 211, 211, 0.67);
 	}
 `;
+
+export default App;
