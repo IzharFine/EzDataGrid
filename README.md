@@ -100,6 +100,9 @@ If this is editable column, if you use it you must provide the type prop as well
 #### type - string
 Set the column type for editable mode. supported types: text, number, checkbox, date.
 
+#### minWidth - string
+Set the column min-width(only in pixels). default: 80px;
+
 #### Example of custom button:
 
 

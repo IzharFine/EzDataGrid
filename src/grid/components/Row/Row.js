@@ -23,7 +23,7 @@ export const Row = (props) => {
 				}
 				{props.children.map((column, index) => {
 					return (
-							<ColumnWrapper key={index} >
+							<ColumnWrapper key={index} minWidth={column.props.minWidth}>
 								{React.cloneElement(column)}
 							</ColumnWrapper>);
 				})}
@@ -76,7 +76,7 @@ const ColumnWrapper = styled.div`
     position: relative;
     width: 100%;
     min-height: 46px;
-	min-width: 80px;
+    ${props => props.minWidth ? "min-width:" + props.minWidth + ";" : "min-width: 80px;"};
     padding-right: 15px;
     padding-left: 15px;
     align-items: center;

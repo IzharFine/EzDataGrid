@@ -130,10 +130,12 @@ export const renderRows = (childrens, pageNumber, rowsInPage, rowsToShow, disabl
     );
 }
 
-export const calculateRowMinWidth = (childrensLength, disableChooseRows) => {
+export const calculateRowMinWidth = (childrens, disableChooseRows) => {
     // Gets the total column width (with padding and margin) - for overflow behavior. 
-    // 110 = ColumnWidth
-    let rowLength = childrensLength * 110;
+    let rowLength = childrens.map(children => {
+        return children.props.minWidth ? children.props.minWidth.split('px')[0] * 1 + 30 : 110;
+    });
+    rowLength = rowLength.reduce((prev, current) => prev + current, 0);
 
     // if disableChooseRows add his total width too.
     if(!disableChooseRows)

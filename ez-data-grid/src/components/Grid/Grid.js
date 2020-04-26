@@ -91,7 +91,7 @@ const Grid = props => {
 		let unFilteredColumns = props.children.filter(columns => !columns.props.isWithoutData);
 		let unfilteredColumnsTitles = unFilteredColumns.map(column => column.props.title);
 		let unfilteredColumnsIds = unFilteredColumns.map(column => column.key);
-		let rowMinWidth = calculateRowMinWidth(props.children.length, settings && settings.disableChooseRows);
+		let rowMinWidth = calculateRowMinWidth(props.children, settings && settings.disableChooseRows);
 								   
 		return (
 		<GridWrapper maxHeight={props.settings && props.settings.maxHeight}>

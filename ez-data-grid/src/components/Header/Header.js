@@ -8,7 +8,7 @@ const Header = props => {
         let isChecked = !isCheckedAll;
         props.checkAllRows(isChecked)
         setIsCheckedAll(isChecked);
-    }
+    }   
 
     return (
     <HeaderWrapper rowMinWidth={props.rowMinWidth}>
@@ -18,7 +18,8 @@ const Header = props => {
         </CheckBoxWrapper>}
         {props.data.map((column, index) => {
             return (
-            <HeaderColumn 
+            <HeaderColumn
+            minWidth={column.props.minWidth}
             disableSorting={props.disableSorting}
             disableFilters={props.disableFilters}
             onOpenFilterClicked={props.onOpenFilterClicked}
@@ -58,7 +59,7 @@ const HeaderColumn = props => {
     }
 
     return(
-    <HeaderColumnWrapper key={props.index} isWithoutData={props.isWithoutData}>
+    <HeaderColumnWrapper key={props.index} isWithoutData={props.isWithoutData} minWidth={props.minWidth} haveActions={!props.disableSorting || !props.disableFilters}>
         <HeaderValueWrapper isWithoutData={props.isWithoutData}>
             <ValueWrapper>
                 {props.value}
@@ -74,6 +75,7 @@ const HeaderColumn = props => {
 
 const ValueWrapper = styled.div`
     font-size: 13px;
+    transition: .25s linear all;
 `;
 
 const CheckBoxWrapper = styled.div`
@@ -93,7 +95,6 @@ const ChooseRowsCheckBox = styled.input`
 const FilterButton = styled.div`
     font-size: 18px;
     opacity: 0;
-    margin-bottom: 0.2rem;
     margin-left: 0.35rem;
     color: ${props => props.isFiltered ? "#008000" : "#4f4f4f"};
     -webkit-transition: .25s linear all;
@@ -125,7 +126,7 @@ const BottomSortArrow = styled.div`
     border-left: 9px solid transparent;
     border-right: 9px solid transparent;
     border-top: 9px solid #4f4f4f;
-    margin-bottom: 0.55rem;
+    margin-bottom: 0.45rem;
     opacity: 0;
     transition: .25s linear all;
     margin-left: ${props => props.disableFilters ? "auto" : "0.55rem"};
@@ -148,12 +149,28 @@ const HeaderColumnWrapper = styled.div`
     padding-left: 15px;
     align-items: center;
     display:flex;
-    transition: .25s linear background-color;
-    min-width: 80px;
+    transition: .25s linear all;
+    ${props => props.minWidth ? "min-width:" + props.minWidth + ";" : "min-width: 80px;"};
 
     &:hover{
         background-color: ${props => props.isWithoutData ? "" : "#eaeaeaab"};
 	}
+
+    &:hover ${TopSortArrow} {
+        opacity: 1;
+    }
+
+    &:hover ${BottomSortArrow} {
+        opacity: 1;
+    }
+
+    &:hover ${FilterButton} {
+        opacity: 1;
+    }
+
+    &:hover ${ValueWrapper} {
+        ${props => props.isWithoutData || !props.haveActions ? "" : "transform: translate(-25px, -15px); font-size: 12px; position: absolute;"};
+    }
 `;
 
 const HeaderValueWrapper = styled.div`
@@ -169,22 +186,6 @@ const HeaderValueWrapper = styled.div`
     display: flex;
     align-items: center;
     font-weight: bold;
-
-    &:hover ${TopSortArrow} {
-        opacity: 1;
-    }
-
-    &:hover ${BottomSortArrow} {
-        opacity: 1;
-    }
-
-    &:hover ${FilterButton} {
-        opacity: 1;
-    }
-
-    &:hover ${ValueWrapper} {
-        display: ${props => props.isWithoutData ? "block" : "none"};
-    }
 `;
 
 const HeaderWrapper = styled.div`
