@@ -106,7 +106,7 @@ export const sortByColumn = (columnId, isAsc, rowsToShow) => {
     );
 }
 
-export const renderRows = (childrens, pageNumber, rowsInPage, rowsToShow, disableChooseRows, onValueChange, rowMinWidth) => {
+export const renderRows = (childrens, pageNumber, rowsInPage, rowsToShow, disableChooseRows, onValueChange, rowMinWidth, onChooseRows) => {
     let startingRow = pageNumber * rowsInPage;
     let endingRow = startingRow + rowsInPage >= rowsToShow.length ? rowsToShow.length : startingRow + rowsInPage;
 
@@ -114,7 +114,7 @@ export const renderRows = (childrens, pageNumber, rowsInPage, rowsToShow, disabl
         <NoResults>No results</NoResults> :
         rowsToShow.slice(startingRow, endingRow).map((row, rowIndex) => { 
         return (
-        <Row index={rowIndex} key={rowIndex} disableChooseRows={disableChooseRows} rowData={row} rowMinWidth={rowMinWidth} >
+        <Row index={rowIndex} key={rowIndex} disableChooseRows={disableChooseRows} rowData={row} rowMinWidth={rowMinWidth} onChooseRows={onChooseRows}>
             {childrens.map(column => {
                 return(
                     React.cloneElement(column, {

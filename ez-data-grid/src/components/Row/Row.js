@@ -11,6 +11,8 @@ export const Row = (props) => {
 	const handleChooseRowClick = () => {
 		props.rowData.IsChecked = !IsChecked;
 		setIsChecked(!IsChecked);
+		if(props.onChooseRows)
+			props.onChooseRows(props.rowData);
 	}
 
 	return (<RowWrapper key={props.index} index={props.index} rowMinWidth={props.rowMinWidth} IsChecked={IsChecked} >

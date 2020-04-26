@@ -45,7 +45,10 @@ const Grid = props => {
 		setRowsToShow(rowsToUpdate.map(rowToShow => {
 			 rowToShow.IsChecked = isChecked;
 			 return rowToShow;
-		}))
+		}));
+
+		if(props.onChooseRows)
+			props.onChooseRows(rowsToUpdate);
 	}
 
 	const onCloseFilterClicked = (filterText) => {
@@ -123,7 +126,7 @@ const Grid = props => {
 						setRowsToShow(sortedRowsToShow);
 					}}>
 				</Header>
-				{renderRows(props.children, pageNumber, rowsInPage, rowsToShow, settings && settings.disableChooseRows, props.onValueChange, rowMinWidth)}
+				{renderRows(props.children, pageNumber, rowsInPage, rowsToShow, settings && settings.disableChooseRows, props.onValueChange, rowMinWidth, props.onChooseRows)}
 			</RowsWrapper>
 			<Footer setRowsInPage={setRowsInPage}
 					rowsToShow={rowsToShow}

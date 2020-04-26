@@ -65,6 +65,9 @@ Event handler call back, creates add button - return column ids + titles.
 #### onValueChange - function
 Event handler call back, triggered on column value change (on editable mode) - return new value, row parent, column id, previous value.
 
+#### onChooseRows - function
+Event handler call back, triggered when row chosen (when disableChooseRows is off) - return the chosen row.
+
 ### Settings(optional):
 
 #### disableFilters - bool
