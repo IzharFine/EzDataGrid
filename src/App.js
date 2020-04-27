@@ -8,7 +8,8 @@ function App() {
 		{
 			disableFilters: false,
 			disableChooseRows: false,
-			disableSorting: false
+			disableSorting: false,
+			disablePaging: false
 		}
 	);
 
@@ -33,7 +34,7 @@ function App() {
 	return (
 	<EzGrid data={accounts} settings={settings} onValueChange={(currentValue, parent, columnId, prevValue) => {
 		// Handle the value change here.
-	}} >
+	}}>
 		<EzColumn key={"index"} title={"Id"} />
 		<EzColumn key={"name"} title={"Name"} type={"text"} editable />
 		<EzColumn key={"company"} title={"Company"} type={"text"} editable />

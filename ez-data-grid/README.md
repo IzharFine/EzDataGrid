@@ -79,6 +79,9 @@ Disable multi select feature, default: false.
 #### disableSorting - bool
 Disable sorting feature, default: false.
 
+#### disablePaging - bool
+Disable paging feature (paging very useful for much better performance specialy with big data), default: false.
+
 #### maxHeight - string
 Set the grid max-height prop, default: 736px.
 

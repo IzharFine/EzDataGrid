@@ -16,7 +16,8 @@ const Grid = props => {
 		{
 			disableFilters: props.settings && props.settings.disableFilters,
 			disableChooseRows: props.settings && props.settings.disableChooseRows,
-			disableSorting: props.settings && props.settings.disableSorting
+			disableSorting: props.settings && props.settings.disableSorting,
+			disablePaging: props.settings && props.settings.disablePaging
 		}
 	);
 	
@@ -91,12 +92,13 @@ const Grid = props => {
 		let unFilteredColumns = props.children.filter(columns => !columns.props.isWithoutData);
 		let unfilteredColumnsTitles = unFilteredColumns.map(column => column.props.title);
 		let unfilteredColumnsIds = unFilteredColumns.map(column => column.key);
-		let rowMinWidth = calculateRowMinWidth(props.children, settings && settings.disableChooseRows);
-								   
+		let rowMinWidth = calculateRowMinWidth(props.children, settings && settings.disableChooseRows);	
+		let enablePaging = 	!settings || !settings.disablePaging;		
+
 		return (
 		<GridWrapper maxHeight={props.settings && props.settings.maxHeight}>
 			{	// Filters wrapper includes: search bar, filter labels, add button.
-				(!settings || (settings && !settings.disableFilters)) &&
+				(!settings || !settings.disableFilters) &&
 				<Filters
 					onSearchChange={onSearchChangeHandler} 
 					onFilterChanged={onFilterChangedHandler} 
@@ -126,14 +128,16 @@ const Grid = props => {
 						setRowsToShow(sortedRowsToShow);
 					}}>
 				</Header>
-				{renderRows(props.children, pageNumber, rowsInPage, rowsToShow, settings && settings.disableChooseRows, props.onValueChange, rowMinWidth, props.onChooseRows)}
+				{renderRows(props.children, pageNumber, enablePaging ? rowsInPage : rowsToShow.length, rowsToShow, settings && settings.disableChooseRows, props.onValueChange, rowMinWidth, props.onChooseRows)}
 			</RowsWrapper>
+			{enablePaging &&
 			<Footer setRowsInPage={setRowsInPage}
 					rowsToShow={rowsToShow}
 					setPageNumber={onPageChangeHandler} 
 					pageNumber={pageNumber}
 					rowsInPage={rowsInPage}
 					rows={rows}/>
+			}
 		</GridWrapper>);
 	}
 }
