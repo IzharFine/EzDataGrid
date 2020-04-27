@@ -3,7 +3,7 @@ import styled, { keyframes } from "styled-components";
 import { eFilterOperator } from "../../utils/enums";
 
 export const FilteredLabelToActions = (props) => {
-  const [isClicked, setIsClicked] = useState(false);
+  const [isClicked, setIsClicked] = useState(true);
   const [value, setValue] = useState(null);
   const [operator, setOperator] = useState(
     eFilterOperator[Object.keys(eFilterOperator)[0]]
@@ -190,9 +190,6 @@ const FilteredActionsWrapper = styled.div`
   border-radius: 0.25rem;
   border: 1px solid #d2d2d2;
   margin-left: 0.25rem;
-  -webkit-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.55);
-  -moz-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.55);
-  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.55);
 `;
 
 const FilteredValue = styled.div`
