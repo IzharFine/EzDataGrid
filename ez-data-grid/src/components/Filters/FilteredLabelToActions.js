@@ -189,14 +189,14 @@ const FilteredActionsWrapper = styled.div`
   background-color: #dadada;
   border-radius: 0.25rem;
   border: 1px solid #d2d2d2;
-  margin-left: 0.25rem;
+  margin-right: 0.25rem;
 `;
 
 const FilteredValue = styled.div`
   display: inline-flex;
   padding: 0.375rem 0.75rem;
   line-height: 1.5;
-  margin-left: 0.25rem;
+  margin-right: 0.25rem;
   background-color: ${(props) => (!props.haveFilter ? "#a02626" : "#45ac20")};
   background-clip: padding-box;
   border-radius: 0.25rem;

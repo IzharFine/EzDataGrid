@@ -97,7 +97,7 @@ const SearchInput = styled.input`
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
   outline: none;
-  margin-right: 0.25rem;
+  margin-right: 0.5rem;
   font-size: 12px;
 `;
 
