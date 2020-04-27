@@ -82,17 +82,13 @@ const HeaderColumn = (props) => {
             🝖
           </FilterButton>
         )}
-        {props.isWithoutData || props.disableSorting ? null : isAsc ? (
-          <BottomSortArrow
+        {props.isWithoutData || props.disableSorting ? null : 
+          <SortArrow
+            isAsc={isAsc}
             disableFilters={props.disableFilters}
             onClick={handleSortClicked}
           />
-        ) : (
-          <TopSortArrow
-            disableFilters={props.disableFilters}
-            onClick={handleSortClicked}
-          />
-        )}
+        }
       </HeaderValueWrapper>
     </HeaderColumnWrapper>
   );
@@ -132,30 +128,16 @@ const FilterButton = styled.div`
   }
 `;
 
-const TopSortArrow = styled.div`
-  border-left: 9px solid transparent;
-  border-right: 9px solid transparent;
-  border-bottom: 9px solid #4f4f4f;
-  margin-bottom: 0.45rem;
-  opacity: 0;
-  transition: 0.25s linear all;
-  margin-left: ${(props) => (props.disableFilters ? "auto" : "0.55rem")};
-  cursor: pointer;
-
-  &:hover {
-    border-bottom: 9px solid black;
-  }
-`;
-
-const BottomSortArrow = styled.div`
+const SortArrow = styled.div`
   border-left: 9px solid transparent;
   border-right: 9px solid transparent;
   border-top: 9px solid #4f4f4f;
   margin-bottom: 0.45rem;
   opacity: 0;
-  transition: 0.25s linear all;
+  transition: 0.1s linear all;
   margin-left: ${(props) => (props.disableFilters ? "auto" : "0.55rem")};
   cursor: pointer;
+  ${(props) => (!props.isAsc ? "transform: rotateX(180deg)" : "")};
 
   &:hover {
     border-top: 9px solid black;
@@ -182,11 +164,7 @@ const HeaderColumnWrapper = styled.div`
     background-color: ${(props) => (props.isWithoutData ? "" : "#eaeaeaab")};
   }
 
-  &:hover ${TopSortArrow} {
-    opacity: 1;
-  }
-
-  &:hover ${BottomSortArrow} {
+  &:hover ${SortArrow} {
     opacity: 1;
   }
 
