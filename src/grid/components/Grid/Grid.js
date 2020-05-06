@@ -68,8 +68,10 @@ const Grid = (props) => {
   const onOpenFilterClicked = (filterText, isFiltered) => {
     if(!isFiltered)
       setFilteredList([...filteredList, filterText]);
-    else
+    else{
+      setRowsToShow(removeFilter(filterText, rows));
       onCloseFilterClicked(filterText);
+    }
   };
 
   const onSearchChangeHandler = (ele) => {
