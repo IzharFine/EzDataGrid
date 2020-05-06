@@ -65,8 +65,11 @@ const Grid = (props) => {
     ]);
   };
 
-  const onOpenFilterClicked = (filterText) => {
-    setFilteredList([...filteredList, filterText]);
+  const onOpenFilterClicked = (filterText, isFiltered) => {
+    if(!isFiltered)
+      setFilteredList([...filteredList, filterText]);
+    else
+      onCloseFilterClicked(filterText);
   };
 
   const onSearchChangeHandler = (ele) => {

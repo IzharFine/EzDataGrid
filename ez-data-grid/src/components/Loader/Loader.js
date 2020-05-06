@@ -1,7 +1,7 @@
 import React from "react";
 
 export const Loader = (props) => {
-  return <div>LOADING</div>;
+  return <div>Loading grid</div>;
 };
 
 export default Loader;

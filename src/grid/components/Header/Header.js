@@ -59,10 +59,7 @@ const HeaderColumn = (props) => {
   };
 
   const onFilterValueClickHandler = () => {
-    if (!isFiltered) {
-      props.onOpenFilterClicked(props.value);
-      setIsFiltered(!isFiltered);
-    }
+      props.onOpenFilterClicked(props.value, isFiltered);
   };
 
   return (
@@ -134,7 +131,7 @@ const SortArrow = styled.div`
   border-top: 9px solid #4f4f4f;
   margin-bottom: 0.45rem;
   opacity: 0;
-  transition: 0.1s linear all;
+  transition: 0.125s linear all;
   margin-left: ${(props) => (props.disableFilters ? "auto" : "0.55rem")};
   cursor: pointer;
   ${(props) => (!props.isAsc ? "transform: rotateX(180deg)" : "")};
