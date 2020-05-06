@@ -69,7 +69,9 @@ const Grid = (props) => {
     if(!isFiltered)
       setFilteredList([...filteredList, filterText]);
     else{
-      setRowsToShow(removeFilter(filterText, rows));
+      let rowsAfterFilterRemove = removeFilter(filterText, rows);
+      if(rowsAfterFilterRemove.length != rowsToShow.length)
+        setRowsToShow(rowsAfterFilterRemove);
       onCloseFilterClicked(filterText);
     }
   };
